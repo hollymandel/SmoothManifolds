@@ -12,6 +12,20 @@ May 2017
 
 \line(1,0){250}
 \end{center}
+\subparagraph{1-1} \textbf{The line with two origins.} Take $\mathbb{R} \times \lbrace 1 \rbrace \cup \mathbb{R} \times \lbrace -1 \rbrace \subset \mathbb{R}^2$ and let $L$ be the quotient described. Let $p$ be the quotient map.  
+
+First, we show that $L$ is locally Euclidean. Cconsider the set $A_1 = \mathbb{R} \times \lbrace 1 \rbrace \subset L$. The preimage of this set under the quotient map can be written as the union
+\begin{equation*}
+\mathbb{R} \times \lbrace 1 \rbrace  \cup (-\infty,0) \times \lbrace -1 \rbrace \cup (0,\infty) \times \lbrace -1 \rbrace
+\end{equation*}
+which is open in the subspace topology on $\mathbb{R} \times \lbrace 1 \rbrace \cup \mathbb{R} \times \lbrace -1 \rbrace$. Now define $f: A_1 \rightarrow \mathbb{R}$ so that $f(x,1) = x$. Then $f$ is continuous: if $(a,b) \subset A_1$ is an interval not containing the origin, then $(f \circ p)^{-1}(a,b) = (a,b) \times \lbrace -1 \rbrace \cup (a,b) \times \lbrace 1 \rbrace$. Otherwise, $(f \circ p)^{-1}(a,b) = (a,b) \times \lbrace 1 \rbrace \cup (a,0) \times \lbrace -1 \rbrace \cup (0,b) \times \lbrace -1 \rbrace$. In addition, $f$ is bijective, since its inverse $g$ is given by $g(x) = (x,1)$. We claim that $g$ is continuous, so $f$ is a homeomorphism, and $(A_1,f)$ is a chart. (Then a similar argument for $A_2 = \mathbb{R} \times \lbrace -1 \rbrace \subset L$ gives a chart for the remaining points in $L$.)
+
+To see that $f$ is an open mapping, we think about what subsets of $A_1$ can be open. Let $B$ be a saturated open subset of $\mathbb{R} \times \lbrace 1 \rbrace \cup \mathbb{R} \times \lbrace -1 \rbrace \subset \mathbb{R}^2$. It is easy to see that for non-origin point $z \in B$, there is an open neighborhood of $f \circ p(z)$ in $f \circ p(B)$. Now if $B$ contains $(0,1)$, then it must contain a neighborhood of $(-\epsilon,\epsilon) \times \lbrace 1 \rbrace$, in which case $f \circ p(B)$ contains $(-\epsilon,\epsilon)$, an open neighborhood of $f \circ p(0,1)$. If $B$ contains both origins, the situation is the same. If $B$ contains only $(0,-1)$, then $f \circ p(B)$ does not contain $0$. 
+
+
+Secondly, similar to that in the previous paragraph shows that the quotient map $p$ is open. So $L$ is the open quotient of a second-countable space, and therefore second-countable.
+
+Finally, $L$ is not Hausdorff. For any open subset of $L$ containing $(0,1)$ contains an open neighborhood $(-\epsilon,\epsilon) \times \lbrace 1 \rbrace$ whose preimage under $p$ contains $(-\epsilon,\epsilon) \times \lbrace 1 \rbrace \cup (-\epsilon,0) \times \lbrace -1 \rbrace \cup (0,\epsilon) \times \lbrace -1 \rbrace$. Similarly, the preimage under $p$ of any open subset of $L$ containing $(0,-1)$ contains $(-\epsilon,\epsilon) \times \lbrace -1 \rbrace \cup(-\epsilon',0) \times \lbrace 1 \rbrace \cup (0,\epsilon') \times \lbrace 1 \rbrace$. Since any two such sets overlap, it is impossible to find disjoint open sets separating $(0,1)$ and $(0,-1)$.
 
 \subparagraph{1-2} \textbf{The disjoint union of uncountably many copies of $\mathbb{R}$.} Let $D = \coprod \limits_{\alpha \in \mathcal{A}} \mathbb{R} \times \lbrace \alpha \rbrace$ for an uncountable index set $\mathcal{A}$. $D$ is clearly locally Euclidean, since each $\mathbb{R} \times \lbrace \alpha \rbrace$ is itself a locally Euclidean neighborhood, and Hausdorff, since distinct points within each copy of $\mathbb{R}$ can be separated and points in different copies of $\mathbb{R}$ are separated by the corresponding copies of $\mathbb{R}$. However, any basis for the topology on $D$ must contain a subset of $(-\epsilon,\epsilon) \times \lbrace \alpha \rbrace$ for all $\alpha \in \mathcal{A}$. This collection alone is uncountable. 
 
@@ -36,25 +50,9 @@ Any angle function $\theta$ defined on a proper subset $U \subset S^1$ gives a c
 To show uniqueness, say $B'$ satsfies the same condition. Then the image of $P$ under the linear transformation $\bigg( \begin{array}{c} 0 \\ B-B' \end{array} \bigg)$ is contained in $S$. But by the choice of basis, this image is also contained in $Q$. Since $S \cap Q = \lbrace 0 \rbrace$, this proves that $B-B' = 0$. 
 
 \subparagraph{1-12}. \textbf{Product of manifolds with a manifold with boundary.} Didn't write up. As far as I can tell it just goes through like you would expect. 
-\begin{center}
-\line(1,0){250}
-\end{center}
 
 
 
-\subparagraph{1-1} \textbf{Extra: The line with two origins.} Take $\mathbb{R} \times \lbrace 1 \rbrace \cup \mathbb{R} \times \lbrace -1 \rbrace \subset \mathbb{R}^2$ and let $L$ be the quotient described. Let $p$ be the quotient map.  
 
-First, we show that $L$ is locally Euclidean. Cconsider the set $A_1 = \mathbb{R} \times \lbrace 1 \rbrace \subset L$. The preimage of this set under the quotient map can be written as the union
-\begin{equation*}
-\mathbb{R} \times \lbrace 1 \rbrace  \cup (-\infty,0) \times \lbrace -1 \rbrace \cup (0,\infty) \times \lbrace -1 \rbrace
-\end{equation*}
-which is open in the subspace topology on $\mathbb{R} \times \lbrace 1 \rbrace \cup \mathbb{R} \times \lbrace -1 \rbrace$. Now define $f: A_1 \rightarrow \mathbb{R}$ so that $f(x,1) = x$. Then $f$ is continuous: if $(a,b) \subset A_1$ is an interval not containing the origin, then $(f \circ p)^{-1}(a,b) = (a,b) \times \lbrace -1 \rbrace \cup (a,b) \times \lbrace 1 \rbrace$. Otherwise, $(f \circ p)^{-1}(a,b) = (a,b) \times \lbrace 1 \rbrace \cup (a,0) \times \lbrace -1 \rbrace \cup (0,b) \times \lbrace -1 \rbrace$. In addition, $f$ is bijective, since its inverse $g$ is given by $g(x) = (x,1)$. We claim that $g$ is continuous, so $f$ is a homeomorphism, and $(A_1,f)$ is a chart. (Then a similar argument for $A_2 = \mathbb{R} \times \lbrace -1 \rbrace \subset L$ gives a chart for the remaining points in $L$.)
-
-To see that $f$ is an open mapping, we think about what subsets of $A_1$ can be open. Let $B$ be a saturated open subset of $\mathbb{R} \times \lbrace 1 \rbrace \cup \mathbb{R} \times \lbrace -1 \rbrace \subset \mathbb{R}^2$. It is easy to see that for non-origin point $z \in B$, there is an open neighborhood of $f \circ p(z)$ in $f \circ p(B)$. Now if $B$ contains $(0,1)$, then it must contain a neighborhood of $(-\epsilon,\epsilon) \times \lbrace 1 \rbrace$, in which case $f \circ p(B)$ contains $(-\epsilon,\epsilon)$, an open neighborhood of $f \circ p(0,1)$. If $B$ contains both origins, the situation is the same. If $B$ contains only $(0,-1)$, then $f \circ p(B)$ does not contain $0$. 
-
-
-Secondly, similar to that in the previous paragraph shows that the quotient map $p$ is open. So $L$ is the open quotient of a second-countable space, and therefore second-countable.
-
-Finally, $L$ is not Hausdorff. For any open subset of $L$ containing $(0,1)$ contains an open neighborhood $(-\epsilon,\epsilon) \times \lbrace 1 \rbrace$ whose preimage under $p$ contains $(-\epsilon,\epsilon) \times \lbrace 1 \rbrace \cup (-\epsilon,0) \times \lbrace -1 \rbrace \cup (0,\epsilon) \times \lbrace -1 \rbrace$. Similarly, the preimage under $p$ of any open subset of $L$ containing $(0,-1)$ contains $(-\epsilon,\epsilon) \times \lbrace -1 \rbrace \cup(-\epsilon',0) \times \lbrace 1 \rbrace \cup (0,\epsilon') \times \lbrace 1 \rbrace$. Since any two such sets overlap, it is impossible to find disjoint open sets separating $(0,1)$ and $(0,-1)$.
 
 \end{document}
