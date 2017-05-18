@@ -1,8 +1,7 @@
 \documentclass[10pt,letter]{article}
-\usepackage{amsmath,amssymb,graphicx,setspace,fullpage,breqn,mathtools,stmaryrd}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,stmaryrd}
 \onehalfspacing
 \usepackage{fullpage}
-\DeclareMathOperator*{\argmin}{arg\,min}
 
 \begin{document}
 \noindent Github/dogestoyevsky \\
@@ -13,5 +12,43 @@ May 2017
 \line(1,0){250}
 \end{center}
 
+\subparagraph{2-2} \textbf{Smooth maps to product manifolds.} Let $M = M_1 \times ... \times M_k$. It is clear that if $F: N \rightarrow M$ is smooth, then each $\pi_i \circ F$ is smooth as the composition of smooth maps. On the other hand, say each $F_i = \pi_i \circ F$ is smooth. Then $F$ is continuous as the direct product of continuous maps. Take $p \in N$ and consider $F(p) \in M$. By the definition of the product topology, there is an open subset of the form $W = W_1 \times... \times W_k$ where each $W_j$ is open and $F(p) \in W_1 \times... \times W_k$. By restricting we can assume that $(W_j,\phi_j)$ is a smooth chart for $M_j$. Let $\phi = \Pi_{j=1}^k \pi_j$. Then $(W,\phi)$ is a smooth chart for $M$.  
+
+Now, take $(U,\psi)$ any chart containing $p$ (using the continuity of $F$, we can assume $F(U) \subseteq W$) and consider $\phi \circ F \circ \psi^{-1}: \psi(U) \rightarrow \psi(W)$.  Then the $j$th component of $\phi \circ F \circ \psi^{-1}$ is equal to $\phi_j \circ \pi_j \circ F \circ \psi^{-1}$, which is smooth by the assumption that $\pi_j \circ F$ is smooth. Since a function $\mathbb{R}^n \rightarrow \mathbb{R}^m$ is smooth if all its partials are smooth, this shows that $\phi \circ F \circ \psi^{-1}$ is smooth. (If the $j$th component of $M$ has boundary, then $\phi_j \circ \pi_j \circ F \circ \psi^{-1}$ has a local smooth extension, and the product of this extension with the other functions gives a local smooth extension of $\phi \circ F \circ \psi^{-1}$.) Since $p$ was arbitrary, this shows that $F$ is smooth.
+ 
+\subparagraph{2-4} \textbf{Inclusion of a closed ball in Euclidean space.} I think it makes more sense to come back to this after learning about smooth structures on submanifolds. Otherwise what, just choose any smooth structure for $\bar{\mathbb{B}^n}$? 
+
+\subparagraph{2-6} \textbf{Homogeneous smooth functions define smooth functions between projective spaces.} Let $f$ be a smooth homogeneous function $\mathbb{R}^{n+1} \rightarrow \mathbb{R}^{k+1}$. Clearly $F$ defined by $F([x]) = [f(x)]$ is well-defined, since if $[x] = [y]$ for $x, y \in \mathbb{R}^{n+1}$, then $x = \lambda y$ for $\lambda \neq 0$, so $f(x) = f(\lambda y) = \lambda^d f(y)$, and so $[f(x)] = [f(y)]$. Also, if $q_k: \mathbb{R}^{k+1} \rightarrow \mathbb{R}P^k$ is the quotient map, then $q_k \circ f$ is continuous, and since $q_k \circ f = F \circ q_n$, a basic property of quotient maps implies that $F$ is continuous. 
+
+Now given $\mathbb{R}P^n$ and $\mathbb{R}P^k$ the smooth structure described in Chapter 1. Let $(U_i,\phi_i)$ be these charts on $\mathbb{R}P^n$ and $(W_i,\psi_i)$ on $\mathbb{R}P^k$. Then on the set $\phi_i(U_i \cap F^{-1}(W_j))$, we can write
+\begin{dmath*}
+\psi_j \circ F \circ \phi_i^{-1}(x_1,...,x_n) = \psi_j \circ F ([x_1,...,x_{i-1},1,x_{i},...,x_n]) = \psi_j([f(x_1,...,x_{i-1},1,x_{i},...,x_n)]) = 
+(\frac{f_1(x_1,...,x_{i-1},1,x_{i},...,x_n)}{f_j(x_1,...,x_{i-1},1,x_{i},...,x_n)},...,\frac{f_{j-1}(x_1,...,x_{i-1},1,x_{i},...,x_n)}{f_j(x_1,...,x_{i-1},1,x_{i},...,x_n)},\frac{f_{j+1}(x_1,...,x_{i-1},1,x_{i},...,x_n)}{f_j(x_1,...,x_{i-1},1,x_{i},...,x_n)},...,\frac{f_{n}(x_1,...,x_{i-1},1,x_{i},...,x_n)}{f_j(x_1,...,x_{i-1},1,x_{i},...,x_n)}).
+\end{dmath*}
+Since $f_j$ is nonzero on $U_i \cap F^{-1}(W_j)$, this is a smooth function. By Proposition 2.5(b), this implies that $F$ is smooth. 
+
+\subparagraph{2-8} \textbf{A diffeomorphism from $\mathbb{K}^n$ to a dense subset of $\mathbb{K}P^n.$} First let $\mathbb{K} = \mathbb{R}$. The map $\mathbb{R}^n \rightarrow \mathbb{R}P^n$ defined by $f(x_1,...,x_n) = [x_1,...,x_n,1]$ is surjective onto the chart $U_{n+1} = \lbrace [x_1,...,x_{n+1}] : x_{n+1} \neq 0 \rbrace$. For given such an $[x_1,...,x_{n+1}]$, we can fix a representative such that $x_{n+1} = 1$, and then $[x_1,...,x_{n+1}] = f(x_1,...,x_n)$. Also, $U_{n+1}$ is dense in $\mathbb{R}P^n$. For given $j = 1,...,n$, $\phi_j(U_{n+1} \cap U_j) = \lbrace (x_1,...,x_n) \in \mathbb{R}^n \setminus \lbrace 0 \rbrace, x_n \neq 0 \rbrace$. This is a dense subset of $\mathbb{R}^n$. Since $\phi_j$ is a homeomorphism, this implies that $U_{n+1} \cap U_j$ is dense in $U_{j}$ for all $j$. Therefore $U_{n+1}$ is dense in every element of an open cover of $\mathbb{R}P^n$, which implies that $U_{n+1}$ is dense in $\mathbb{R}P^n$.
+
+It is clear that $f$ is smooth. For using the charts for $\mathbb{R}P^n$ described in the text, $f(\mathbb{R}^n) \subseteq U_{n+1}$ and $\phi_{n+1} \circ f \circ \text{id}^{-1}(x_1,...,x_n) = (x_1,...,x_n)$. Now, let $g$ be the inverse of $f$ given by $[(x_1,...,x_{n+1})] \mapsto (\frac{x_1}{x_{n+1}},...,\frac{x_n}{x_{n+1}})$. It is easily checked that this is well-defined on $U_{n+1} \subseteq \mathbb{R}P^n$ and that it is inverse to $f$. Then, $g$ is smooth, since $g(U_{n+1}) \subseteq \mathbb{R}^n$, and $\text{id} \circ g \circ \phi_{n+1}^{-1}(x_1,...,x_n) = (x_1,...,x_n)$. 
+
+If we substitute $\mathbb{C}$ throughout, the above argument shows that $f: \mathbb{C}^n \rightarrow \mathbb{C}P^n$ maps onto an open subset, and that $f$ and $g$ have holomorphic transition functions using the natural charts $\mathbb{C}P^n \rightarrow \mathbb{C}^n$. Composing these with the diffeomorphism $\mathbb{C}^n \rightarrow \mathbb{R}^{2n}$ gives the desired result. 
+
+\subparagraph{2-10} \textbf{Smooth maps define linear transformations of smooth functions.}
+\begin{enumerate}[label=(\alph*)]
+\item $F^*(f+g) = (f+g) \circ F = f \circ F + g \circ F$.
+\item First say that $F$ is smooth and take $f \in C^{\infty}(N)$. Then for all $p \in M$, there exists $(U,\phi)$ such that $F(p) \in U$ and $f \circ \phi^{-1}: \phi(U) \rightarrow \mathbb{R}$ is smooth. Also, there exists $(W,\psi)$ a chart for $M$ containing $p$ such that $W \subseteq F^{-1}(U)$ (by the continuity of $F$) and $\phi \circ F \circ \psi^{-1}: \psi(W) \rightarrow \phi(U)$ is smooth. But then
+\begin{equation*}
+f \circ F \circ \psi^{-1} = f \circ \phi^{-1} \circ \phi \circ F \circ \psi^{-1} 
+\end{equation*}
+is a smooth map $\psi(W) \rightarrow \mathbb{R}$. Since $p$ was arbitrary, this proves that $F^{\ast}(f)$ is smooth. 
+
+On the other hand, say $F^{\ast}(C^{\infty}(M)) \subseteq C^{\infty}(N)$. Take $p \in M$ and $q = F(p) \in N$. Let $(U,\phi)$ be a chart on $N$ such that $q \in U$. Now for each $i$, the component function $\phi^i$ is a smooth function on a closed neighborhood $A_i$ of $U$ containing $q$. By Lemma 2.26, $\phi^i$ extends to a smooth function $\tilde{\phi^i}$ on $N$. Then $F^{\ast}(\tilde{\phi^i})$ is smooth, $i=1,...,n$. Let $\tilde{\phi} = (\tilde{\phi^1},...,\tilde{\phi^n})$. Viewing $\tilde{\phi}$ as a smooth map $N \rightarrow \mathbb{R}^n$, it follows from Proposition 2.12 that $F^\ast \tilde{\phi} = \tilde{\phi} \circ F$ is smooth as a map $M \rightarrow \mathbb{R}^n$. 
+
+Now, take an open set $W \subseteq \cap_{i=1}^n A_i$ such that $q \in W$, and $\phi = \tilde{\phi}$ on $W$. Then $(W,\tilde{\phi})$ is a smooth chart for $N$, since all transition maps can be computed by restricting $\phi$. But since $F^\ast \tilde{\phi}$ is a smooth function $M \rightarrow \mathbb{R}^n$, there is a chart $(V,\psi)$ with $V \subseteq F^{-1}(W)$ such that $\text{id}^{-1} \circ (\phi \circ F) \circ \psi^{-1} = \tilde{\phi} \circ F \circ \psi^{-1}$ is a smooth map $\psi(V) \rightarrow \phi(W)$, as desired. 
+
+\item Let $G$ be the inverse of $F$. Say $F$ is a diffeomorphism, so $G$ is smooth. Then  $G^{\ast}$ is a linear map and $G^{\ast}(C^{\infty}(N)) \subseteq C^{\infty}(M)$. But clearly $F^{\ast} \circ G^{\ast} = \text{Id}(C^{\infty}(M))$ and $G^{\ast} \circ F^{\ast} = \text{Id}(C^\infty(N))$. Thus $F^{\ast}$ is a linear map $C^{\infty}(N) \rightarrow C^{\infty}(M)$ and with inverse $G^{\ast}$, so it is an isomorphism. 
+
+On the other hand, say $F^{\ast}$ is an isomorphism $C^{\infty}(N) \rightarrow C^{\infty}(M)$. Note that for $h \in C(N)$, if $F^{\ast}(h) = 0$, then $h = 0$, since $F$ is surjective. For $p \in N$, let $(W,\psi)$ be a smooth chart on $M$ containing $G(p)$. Then for $i=1,...,m$, $\psi^i \circ G \in C(N)$. But $F^{\ast}(\psi^i \circ G) = \psi^i \circ G \circ F = \psi^i \in C^{\infty}(M)$. Since $F^{\ast}$ is injective, this implies that $\psi^i \circ G$ is smooth. By Proposition 2.12, this implies that $\psi \circ G$ is smooth, which by an argument used above implies that $G$ is smooth.
+\end{enumerate}
 
 \end{document}
