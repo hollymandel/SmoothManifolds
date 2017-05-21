@@ -1,0 +1,46 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,stmaryrd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+May 2017
+\begin{center}
+\textbf{Chapter Three: Tangent Vectors}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+
+\subparagraph{3-2} \textbf{Tangent space to a product manifold.} Take $M = M_1 \times... \times M_n$. The map $\alpha$ is clearly linear as the direct product of linear maps. To see that it is surjective, take $p = (p_1,...,p_n) \in \text{Int } M$ and $(v_1,...,v_n) \in \oplus_{i=1}^N T_{p_i}M_i$. By Proposition 3.23, there exist an $\epsilon > 0$ and a collection of curves $\gamma_i: (-\epsilon,\epsilon) \rightarrow M_i$ such that $\gamma(0) = p_i$ and $\gamma_i'(0) = v_i$. But then we can define a  curve $\gamma = (\gamma_1,...,\gamma_n): (-\epsilon,\epsilon) \rightarrow M$ which is smooth in the natural charts on $M$. We have that $\gamma(0) = p$ and $\gamma'(0) = (v_1,...,v_n)$. Therefore $\gamma'(0) \in T_pM$. But $(d\pi_i)_p\gamma'(0) = d(\pi_i  \circ \gamma)_0 = d(\gamma_i)_0 = v_i$. This shows that $\alpha(\gamma'(0)) = v$. Injectivity then follows from dimension-counting (Example 1.8)
+
+Now, if $p$ is a boundary point of $M$, the proof goes through in the same way, only the curves in equation are defined on $(-\epsilon,0]$ and derivatives are one-sided. 
+
+\subparagraph{3-4} \textbf{Tangent bundle to $\mathbb{S}^1$.} Let $\gamma: [0,2\pi] \rightarrow \mathbb{S}^1$ be the map $t \mapsto (\cos(t),\sin(t))$. Then $\gamma'(t_0)$ spans $T_{\gamma(t_0)}\mathbb{S}^1$, so a typical element of $T\mathbb{S}^1$ can be writen $(\gamma(t_0),a \cdot \gamma'(t_0))$.  Define the map $F: T\mathbb{S}^1 \rightarrow \mathbb{S}^1 \times \mathbb{R}$ that sends $(\gamma(t_0),a \cdot \gamma'(t_0)) \mapsto (\gamma(t_0),a)$. Note that $\gamma'(0) = \gamma'(2\pi)$ so there is no ambiguity at this point. Recall the stereographic projection charts on $S^1$: $\phi_N(S^1 \setminus N): (x,y) \mapsto \frac{x}{1-y}$ and $\phi_S(S^1 \setminus S): (x,y) \mapsto \frac{x}{1+y}$. Now $\gamma'(t_0) = D(\phi^{-1})_{\phi \circ \gamma(t_0} \circ D(\phi \circ \gamma)\vert_{(t_0)}(\frac{d}{dt})$. A computation shows that $D(\phi \circ \gamma)\vert_{(t_0)} = \frac{1}{1-\sin(t_0)}$. But $\gamma(t_0)= (\cos(t_0),\sin(t_0))$. Therefore given $(x,v) \in \phi_N(S^1 \setminus N)$, if $\gamma(t_0) = \phi_N^{-1}(x)$, we can write
+\begin{equation*}
+\phi_N^{-1}(x,v) = ((\frac{2x}{1+x^2},\frac{x^2-1}{x^2+1}),vD\phi^{-1}(\frac{d}{dx})) = ((\frac{2x}{1+x^2},\frac{x^2-1}{x^2+1}),\frac{2v}{(1+x^2)} \gamma'(t_0)).
+\end{equation*}
+Now there are charts on $S^1 \times \mathbb{R}$ given by $\phi_N \times \text{Id}$ and $\phi_S \times \text{Id}$. Using the first chart, we can represent $F$ in coordinates on $\phi_N(S^1 \setminus N)$: $F(x,v) = (x,\frac{2v}{(1+x^2)})$. This is clearly smooth. A similar computation gives a smooth coordinate representation on $\phi_S(S^1 \setminus S)$. 
+
+The inverse of $F$ is given by $G(x,a) = (x,a \cdot \gamma'(t_0))$, where $t_0$ is any point such that $\gamma(t_0) = x$. Calculations similar to those above give a smooth coordinate representation of $G$ on $\phi_N \times \text{Id}(S^1 \setminus N \times \mathbb{R})$ as $(x,\frac{2(1+x^2}{v})$. This is also smooth. A similar computation gives a smooth coordinate representation on $\phi_S \times \text{Id}(S^1 \setminus S \times \mathbb{R})$. Therefore $F$ is a diffeomorphism. CLEAN THIS UP
+
+\subparagraph{3-6} \textbf{A smooth curve into $\mathbb{S}^3$ with nowhere-vanishing velocity.} Write $z_1 = a_1 + i b_1$ and $z_2 = a_2 + i b_2$. Now $\Vert (z_1,z_2) \Vert = 1$, so at most one of $z_1$ and $z_2$ can have unit length. First assume that $\Vert z_2 \Vert < 1$. Then, we can write $\gamma'(t)$ in stereographic coordinates:
+\begin{equation*}
+\gamma(t) = \frac{1}{1-(a_2 \sin(t) + b_2 \cos(t))}(a_1 \cos(t) - b_1 \sin(t),a_1 \sin(t) + b_1 \sin(t),a_2 \cos(t) - b_2 \sin(t))
+\end{equation*}
+Since $a_2 \sin(t) + b_2 \cos(t) \neq 1$ under the assumption that $\Vert z_2 \Vert < 1$, this gives a smooth coordinate represetation of $\gamma$ on all of $\mathbb{R}$. 
+
+On the other hand, if $\Vert z_2 \Vert = 1$, then $\Vert z_1 \Vert \neq 1$ (it's zero), so a different choice of stereographic coordinates gives the same result.
+
+
+To see that $\gamma'(t)$ is nowhere zero, we note that if $M \subset \mathbb{R}^n$ is a manifold and $v \in T_pM$, then we can identify $v$ with a derivation on $\mathbb{R}^n$. For if $\eta(t)$ is a curve into $M$ such that $\eta(0) = p$ and $\eta'(0) = v$, then $\eta$ defines a curve into $\mathbb{R}^n$ and so $\eta'(0) \in T_p\mathbb{R}^n$. Under this identification, we can see that $v = 0$ as a derivation on $M$ only if $v = 0$ as a derivation on $\mathbb{R}^n$. For if $f$ is a smooth function on $\mathbb{R}^n$, then $f \vert_M$ is a smooth function on $M$, since for any smooth chart $(U,\phi)$ for $M$, $f \circ \phi^{-1}$ is a smooth function. In addition, if $\eta'(0)f \neq 0$, then $\eta'(0)f \vert_M \neq 0$. Therefore $v$ is not the zero derivation. 
+
+Also, if $v \in T_pM$, then using the identification of Proposition 3.13, we see that $v = 0$ only if $\Vert v \Vert = 0$. For if $\Vert v \Vert > 0$, then there is some component $v^i \neq 0$, and then if $f(x^1,...,x^n) = x^i$, then $v(f) = \frac{d}{dt}f(p+tv^i) = v^i$. These two facts show that $\gamma'(t) \neq 0$, for $\Vert \gamma'(t) \Vert = 1$ for all $t$. 
+
+\subparagraph{3-8} \textbf{Tangent vectors as isomorphism classes of velocity vectors.} $\Psi$ is well-defined. For say $\gamma_1 \sim \gamma_2$. Then since $\gamma_1'(0)f = \frac{d}{dt} \vert_{t=0} f \circ \gamma_1(t)$ and $\gamma_2'(0)f = \frac{d}{dt} \vert_{t=0} f \circ \gamma_2(t)$, we have that $\gamma_1'(0)f = \gamma_2'(0)f$ for all $f$, and therefore $\Psi(\gamma_1) = \Psi(\gamma_2)$. To see that it is injective, take a coordinate chart $\phi = (\phi^1,...,\phi^n)$ containing $p$. Now if $\Psi(\gamma_1) = \Psi(\gamma_2)$, then $(\phi^i \circ \gamma_1)'(0) = (\phi^i \circ \gamma_2)'(0)$ for $i=1,...,m$. Then we can compute, in the coordinates induced by $\phi$,
+\begin{equation*}
+\gamma_1'(0) = \sum_{i=1}^n \frac{d(\phi^i \circ \gamma_1)}{dt}\bigg \vert_{t=0} \frac{d}{dx_i} \bigg \vert_p = \sum_{i=1}^n \frac{d(\phi^i \circ \gamma_2)}{dt} \bigg \vert_{t=0} \frac{d}{dx_i} \bigg \vert_p  = \gamma_2'(0)
+\end{equation*}
+Finally, if $v \in T_pM$, then by Proposition 3.23, there is a curve $\gamma$ such that $\gamma(0) = p$ and $\gamma'(0) = v$, and then $\Psi(\gamma) = v$. Therefore $\Psi$ is surjective. 
+
+\end{document}
