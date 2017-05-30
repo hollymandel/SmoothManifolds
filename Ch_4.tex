@@ -1,0 +1,74 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,stmaryrd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+May 2017
+\begin{center}
+\textbf{Chapter Four: Submersions, Immersions, and Embeddings}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+
+\subparagraph{Exercise 4.9} We give a counterexample if $M$ has boundary. Consider the inclusion $i: \mathbb{H}^n \rightarrow \mathbb{R}^n$. This map is clearly smooth since it has the identity as a smooth extension on any open set. Also, $i$ is an immersion and a submersion. For the differential of $i$ at a point $p$ is given by the differential of any smooth extension, so $Di_p = D(\text{Id})_p$. However, given $p \in \delta \mathbb{H}^n$, there cannot be an inverse diffeomorphism in a neighborhood of $i(p) \in \mathbb{R}^n$. For say there is such a diffeomorphism $G$. Then $G$ maps an open subset of $\mathbb{R}^n$ into a subset of $\mathbb{H}^n$ that intersects the boundary in $p$. But $G$ is an open map since $DG_{i(p)}$ has nonzero determinant, so this is a contradiction. 
+
+On the other hand, $M$ is a manifold without boundary and $N$ a manifold with boundary, a similar argument (in coordinates) shows that $F$ maps $M$ into the interior of $N$, in which case Proposition 4.8 applies. But if $F$ is a local diffeomorphism $M \rightarrow \text{Int }N$, then it is a local diffeomorphism $M \rightarrow N$, since $\text{Int }N$ is an open subset of $N$. 
+
+\subparagraph{Exercise 4.24} Let $A = [0,1) \subseteq \mathbb{R}$ and consider the inclusion $i: A \hookrightarrow \mathbb{R}$. Then $i$ is a topological embedding since the identity map restricts to a continuous inverse $i(A) \rightarrow A$, and it is smooth as a map from a manifold with boundary to a manifold in the obvious coordinates. Since $i$ is the identity in these coordinates, the differential is injective. Therefore $i$ is a smooth immersion. But $[.5,1) \subseteq A$ is closed, while $i(A)$ fails to be closed, and on the other hand $[0,.5) \subseteq A$ is open, while $i(A)$ fails to be open. 
+
+\begin{center}
+\line(1,0){250}
+\end{center}
+
+
+\subparagraph{4.2} {\bf A smooth map with surjective differential maps interior points to interior points.} Take $p \in M$. Working in coordinates, we can assume that $M \subseteq \mathbb{R}^n$ and $N \subseteq \mathbb{H}^m \subset \mathbb{R}^n$. The assumption that $dF_p$ is nonsingular means that $F$ maps an open neighborhood of $p$ to an open neighborhood of $F(p)$ in $\mathbb{R}^n$. By the smooth invariance of the boundary, this implies that $F(p)$ is an interior point of $N$.
+
+\subparagraph{4.4} {\bf A dense curve in $\mathbb{T}^2$.} Let $f(x) = x - \lfloor x \rfloor$ as in the proof of Lemma 4.21. We have seen that for all $N$, there must be a pair of integers $0 \leq n,m \leq N$ such that $0 < \vert f(n\alpha) - f(m\alpha) \vert = \delta < 1/N$. 
+
+This implies that for all $t \in [0,1]$, there exists $k$ such that $\vert t - f(\alpha k(n-m)) \vert \leq 1/N$. For if $t > f(nx)$, then let $d = t - f(nx)$ and $s = \lfloor d/\delta \rfloor$. Note that $f(a+b) = f(f(a)+f(b))$ and if $0 \leq u < 1/f(r)$ then $f(ur) = uf(r)$. Therefore
+\[
+f(\alpha(n + s(m-n))) - t = f(f(\alpha n) + s \delta) - t < \epsilon.
+\]
+The argument if $t < f(nx)$ is similar. This shows that the points $f(n\alpha): n \in \mathbb{Z}$ are dense in $[0,1]$, which shows that the points $e^{2 \pi i \alpha n}: n \in \mathbb{Z}$ are dense in $\mathbb{S}^1$.
+
+Now, take any point $p = (e^{2 \pi i x},e^{2 \pi i y}) \in \mathbb{T}^2$. The above allows us to fine an integer $n$ such that $\vert e^{2 \pi i \alpha n} -  e^{2 \pi i (x-\alpha y)} \vert < \epsilon$. But then 
+\[ e^{2\pi i \alpha(y+n)} - e^{2 \pi i x} = e^{2\pi i (\alpha y + \alpha n)} - e^{2 \pi i ( \alpha y +  (x- \alpha y))} = e^{2\pi i \alpha n} - e^{2 \pi i (x-\alpha y)}
+\]
+and  
+\[
+\gamma(y + n) = (e^{2 \pi i \alpha (y+n)}, e^{2 \pi i (y+n)}) = (e^{2 \pi i \alpha (y+n)}, e^{2 \pi i y})
+\]
+so $\Vert \gamma(y+n) - p \Vert < \epsilon$, as desired.
+
+
+\subparagraph{4.6} {\bf No smooth submersion from a manifold to $\mathbb{R}^k$.} Say there is a smooth submersion $\pi: M \rightarrow \mathbb{R}^k$ for any $k > 0$. By Proposition 4.28, $\pi$ is an open map, so $\pi(M)$ is open in $\mathbb{R}^k$. But continuous mappings are compact mappings, so $\pi(M)$ is also a compact subset of $\mathbb{R}^k$. This contradicts the Heine-Borel theorem. 
+
+\subparagraph{4.8} {\bf A map that preserves smoothness under composition but is not a smooth submersion.} Clearly $\pi$ is smooth and surjective. If $F: \mathbb{R} \rightarrow P$ is smooth then $F \circ \pi$ is smooth by composition, while if $F \circ \pi$ is smooth, then $F$ can be written as the composition $F \circ \pi \circ \psi$ where $\psi: x \mapsto (x,1)$ is smooth, so $F$ is smooth. But $\pi$ is not a smooth submersion, since its differential vanishes at $(0,0)$. 
+
+\subparagraph{4.10} {\bf $S^n$ is a smooth twofold cover of $\mathbb{R}P^n$.}
+Let 
+\[ 
+U_j^+ = \lbrace (x_1,...,x_{n+1}) \in \mathbb{S}^{n}: x_{j} > 0 \rbrace
+\] 
+and similarly for $U_j^-$. Also, let 
+\[
+W_j = \lbrace [x_1,...,x_{n+1}] \in \mathbb{R}P^n: x_j \neq 0 \rbrace.
+\]
+It has already been shown that $q$ is smooth and surjective, and we know that $\lbrace W_j: j=1,...,n+1 \rbrace$ is a cover of $\mathbb{R}P^n$. We claim that for each $j$, the components of $q^{-1}(W_j)$ are $V_j^+ = U_j^+ \cap q^{-1}(W_j)$ and $V_j^- = U_j^- \cap q^{-1}(W_j)$ and that $q$ restricts to a diffeomorphism of each component with $W_j$. 
+
+To produce a smooth local inverse, define $r^+: W_j \rightarrow V_j^+$ by the equation
+\[
+r^+([x_1,...,x_{n+1}]) = \frac{x_j}{\vert x_{j} \vert \sqrt{\sum_{i=1}^{n+1} x_i^2}}(x_1,...,x_{n+1}),
+\]
+which is easily seen to be well-defined. The coordinate representation using the standard coordinates on $\mathbb{R}P^n$ and $\mathbb{S}^n$ (Examples 1.4, 1.5) is
+\[
+(x_1,...,x_n) \mapsto \frac{1}{\sqrt{1+\sum_{i=1}^{n} x_i^2}}(x_1,...,x_{n})
+\]
+which is clearly smooth. Now if $x = (x_1,...,x_{n+1}) \in U_j^+ \cap q^{-1}(W_j)$, then $r^+(q(x)) = \frac{x_j}{\vert x_j \vert}(x_1,...,x_{n+1}) = x$, while if $y = [y_1,...,y_n] \in W_j$, then $q(r^+([y_1,...,y_n])) = [y_1,...,y_n]$. An analogous argument gives an inverse $r^-$ on $V_j^-$.
+
+To show that $V_j^+$ and $V_j^-$ are the components of $q^{-1}(W_j)$, we note that $W_j$ is connected, since its coordinate representation is $\mathbb{R} \setminus \lbrace 0 \rbrace$, and so $r^+(W_j)$ and $r^-(W_j)$ are connected. But these two sets are clearly disjoint, and since each point in $\mathbb{R}P^n$ has a two-element preimage, they must be all of $q^{-1}(W_j)$. 
+
+\subparagraph{4.12} {\bf Embedding $\mathbb{T}^2$ in $\mathbb{R}^3$.} Since a smooth covering map is a surjective sooth submersion, and since $X$ is clearly constant on the fibers of $\epsilon^2$, Theorem 4.30 gives that $X$ descends to a smooth map $\tilde{X}: \mathbb{T}^2 \rightarrow \mathbb{R}^3$. Since $X$ is a submersion and $\epsilon^2$ a local diffeomorphism, $\tilde{X}$ is a submersion. It is easily seen to be a biijection, so it is a homeomorphism as a continuous bijection from a compact space into a Hausdorff space. It is straightforward to see that the image of this map is the surface of revolution described on Page 79. 
+\end{document}
