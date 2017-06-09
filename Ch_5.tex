@@ -1,0 +1,28 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,stmaryrd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+May 2017
+\begin{center}
+\textbf{Chapter Five: Submanifolds}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+
+\subparagraph{5.2} {\bf Boundary is embedded submanifold.} By Theorem 5.8, it suffices to prove that $\delta M$ satisfies the local $k$-slice condition. Take $p \in \delta M$ and let $(U,\phi)$ be a smooth boundary chart such that $\phi(p) \in \delta \mathbb{H}^n$. By the topological invariance of the boundary, $\phi(\delta M) = \phi(U) \cap \lbrace x^n = 0 \rbrace$. Therefore $(U,\phi)$ is the necessary slice chart.
+
+\subparagraph{5.4} {\bf Figure $8$ is not an embedded submanifold of $\mathbb{R}^2$}. Let $S$ be the figure $8$.  Since small open subsets of $S$ can be easily seen to homeomorphic to open intervals, it follows from the topological invariance of dimension (Theorem 1.2) that if $S$ is an embedded submanifold, it must have dimension $1$. Now, let $(U,\phi)$ be a chart containing $(0,0)$ but not $(0,1)$ or $(0,-1)$. Assume that $U$ is an open ball centered at $(0,0)$. Since $U$ is connected, $\phi(U)$ must be an interval, so $\phi$ induces a homeomorphism between an ``x'' shape and an interval. But then $\phi$ restricts to a homeomorphism between $U \setminus (0,0)$ and two open intervals. This is a contradiction, since $U \setminus (0,0)$ has four connected components while the intervals have two. 
+
+\subparagraph{5.6} {\bf Tangent sphere to a submanifold of $\mathbb{R}^n$.} If $i$ is the inclusion $M \hookrightarrow \mathbb{R}^n$, define $\Phi: TM \rightarrow \mathbb{R}$
+\[
+\Phi(p,v_p) = \Vert Di_p(v_p) \Vert_{\mathbb{R}^n}.
+\]
+Then $\Phi$ is smooth as the composition of smooth maps. It is a submersion, because if $N: \mathbb{R}^n \rightarrow \mathbb{R}$ is the norm map, then $DN_p \neq 0$ for $p \neq 0$, and therefore since $D\Phi_p = DN_{i(p)} \circ Di_p$, $1$ is a regular value of $\Phi$. But $UM = \Phi^{-1}(1)$, so be Corollary 5.14, $UM$ is a smooth $2m-1$ dimensional manifold. 
+
+\subparagraph{5.8} {\bf Tangent sphere to a submanifold of $\mathbb{R}^n$.} It is clear that $F(p) = \Vert p \Vert^{-1}$ is a smooth immersion $\mathbb{R}^n \setminus \lbrace 0 \rbrace \rightarrow \mathbb{R}$, and therefore by Proposition 5.47, $D = \mathbb{R}^n \setminus \mathbb{B}_1(0) = F^{-1}(-\infty,1]$ is an embedded submanifold with boundary of $\mathbb{R}^n \setminus \lbrace 0 \rbrace$, and therefore of $\mathbb{R}^n$. By Proposition 5.46, the boundary of $D$ is the $S^{n-1}$. 
+
+Now, the definition of a regular coordinate ball $B$ gives that $B \subset B'$ where $(B',\phi)$ is a chart, $\bar{B} \subset B'$, and the image of $B$ and $B'$ under $\phi$ are nested balls in $\mathbb{R}^n$. The above shows that $\phi(B') \setminus \phi(B)$ is a manifold with boundary, so $B' \setminus B$ is a manifold with boundary $\delta B$. Since the condition is local, this implies that $M \setminus B$ is a manifold with boundary $\delta B$. Additionally, $\phi$ restricted to $\delta B$ gives the necessary diffeomorphism with $S^{n-1}$. 
+\end{document}
