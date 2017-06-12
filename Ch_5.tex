@@ -22,7 +22,28 @@ May 2017
 \]
 Then $\Phi$ is smooth as the composition of smooth maps. It is a submersion, because if $N: \mathbb{R}^n \rightarrow \mathbb{R}$ is the norm map, then $DN_p \neq 0$ for $p \neq 0$, and therefore since $D\Phi_p = DN_{i(p)} \circ Di_p$, $1$ is a regular value of $\Phi$. But $UM = \Phi^{-1}(1)$, so be Corollary 5.14, $UM$ is a smooth $2m-1$ dimensional manifold. 
 
-\subparagraph{5.8} {\bf Tangent sphere to a submanifold of $\mathbb{R}^n$.} It is clear that $F(p) = \Vert p \Vert^{-1}$ is a smooth immersion $\mathbb{R}^n \setminus \lbrace 0 \rbrace \rightarrow \mathbb{R}$, and therefore by Proposition 5.47, $D = \mathbb{R}^n \setminus \mathbb{B}_1(0) = F^{-1}(-\infty,1]$ is an embedded submanifold with boundary of $\mathbb{R}^n \setminus \lbrace 0 \rbrace$, and therefore of $\mathbb{R}^n$. By Proposition 5.46, the boundary of $D$ is the $S^{n-1}$. 
+\subparagraph{5.8} {\bf Removing a coordinate ball creates a boundary diffeomorphic to $S^{n-1}$.} It is clear that $F(p) = \Vert p \Vert^{-1}$ is a smooth immersion $\mathbb{R}^n \setminus \lbrace 0 \rbrace \rightarrow \mathbb{R}$, and therefore by Proposition 5.47, $D = \mathbb{R}^n \setminus \mathbb{B}_1(0) = F^{-1}(-\infty,1]$ is an embedded submanifold with boundary of $\mathbb{R}^n \setminus \lbrace 0 \rbrace$, and therefore of $\mathbb{R}^n$. By Proposition 5.46, the boundary of $D$ is the $S^{n-1}$. 
 
 Now, the definition of a regular coordinate ball $B$ gives that $B \subset B'$ where $(B',\phi)$ is a chart, $\bar{B} \subset B'$, and the image of $B$ and $B'$ under $\phi$ are nested balls in $\mathbb{R}^n$. The above shows that $\phi(B') \setminus \phi(B)$ is a manifold with boundary, so $B' \setminus B$ is a manifold with boundary $\delta B$. Since the condition is local, this implies that $M \setminus B$ is a manifold with boundary $\delta B$. Additionally, $\phi$ restricted to $\delta B$ gives the necessary diffeomorphism with $S^{n-1}$. 
+
+\subparagraph{5.10} {\bf A family of algebraic curves.} Define $F_a(x,y) = x(x-a)(x-1) - y^2$. For $a \in \mathbb{R} \setminus \lbrace 0, 1 \rbrace$, $F_a$ has $0$ as a regular value. For its differential is given by 
+\[
+D(F_a)\bigg\vert_{(x,y)} = (3x^2-2(a+1)x+a,-2y).
+\]
+In order for $D(F_a)$ to vanish at a point such that $F_a(x,y) = 0$, we must have $y = 0$, so $x(x-1)(x-a) = 0$ as well. Checking the cases $x=0,1,a$ shows that this can only occur when $a \in \lbrace 0,1 \rbrace$. It follows from Corollary 5.14 that $M_a$ is an embedded submanifold for $a \in \mathbb{R} \setminus \lbrace 0, 1 \rbrace$.
+
+In the case where $a = 0$, $M_a$ is not an immersed submanifold. For let $S = M_0$, $S_+ = M_0 \cap \lbrace y > 0 \rbrace$, $S_- = M_0 \cap \lbrace y < 0 \rbrace$, and $\phi(x,y) = y$. Then $S$ is an embedded submanifold with smooth structure induced by the charts $(S_+,\phi \vert_{S_+})$ and $(S_-,\phi \vert_{S_-})$ (Lemma 1.35). For define $g_+: \mathbb{R}_{> 1} \rightarrow \mathbb{R}$ by $g_+(x) = +\sqrt{x^2(x-1)}$, so that $\phi^{-1}  \vert_{y > 0} = (g_+^{-1}(y),y)$. Now $g'(x) > 0$ for $x > 1$ so $g$ is a local diffeormorphism, and therefore a global diffeomorphism, between $\mathbb{R}_{> 1}$ and $\mathbb{R}_{> 0}$. Therefore the inclusion map $i$ has the coordinate representation on $S_+$
+\[
+(g^{-1}(y),y)
+\]
+which is a smooth immersion by what we have argued. A similar argument gives smoothness on $S_-$. It is clear that the inclusion map is a homeomorphism with respect to the topology defined by these charts. 
+
+Therefore, if $M_0$ is an immersed submanifold, its smooth structure must restrict to this smooth structure on $S$. NOT FINISHED
+
+I believe that if $a= 1$, $M_a$ is an immersed submanifold, but I cannot figure out how to show it. NOT FINISHED
+
+
+\subparagraph{5.12} {\bf Restricting a smooth covering map to a boundary component.} By Theorem 5.11, $\delta E$ is an embedded submanifold of $E$, and any component is an open subset of $\delta E$. Let $C$ be such a component. Then by Theorem 5.27 $\pi \vert_C$ is smooth. Now clearly $\pi(\delta E) = \delta M$. Since $\pi \vert_C$ is therefore continuous, $A = \pi \vert_C(C)$ is connected. By Proposition 4.33, $\pi$ is an open map, so $\pi_{\delta E}$ is an open map from $\delta E$ to its image $\delta E$ with the subspace topology. This implies that $\pi \vert_C(C)$ is open and closed in $\delta M$, so it is a component of $\delta M$. 
+
+It remains to show that $\pi \vert_C$ is a smooth covering map. Take $p \in A$ and $U$ an evenly covered set containing $p$. Say a component $D$ of $\pi^{-1}(U)$ intersects $C$. Then each component of $D \cap \delta E$ is contained in $C$. Now $\pi$ restricts to a diffeomorphism between the component containing the unique preimage of $p$ and an open subset of $U \cap \delta M$, which restricts to a diffeomorphism by Theorem 5.27. 
 \end{document}
