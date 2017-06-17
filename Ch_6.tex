@@ -1,0 +1,35 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,stmaryrd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+May 2017
+\begin{center}
+\textbf{Chapter Five: Submanifolds}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+
+\subparagraph{6.2} {\bf Immersion of an $n$-dimensional manifold into $\mathbb{R}^{2n}$.} We assume that $M$ is an embedded submanifold of $\mathbb{R}^{2n+1}$. We saw in Problem 5.6 that $UM$ is an $2n-1$ dimensional submanifold of $T\mathbb{R}^{2n+1}$. Since $\mathbb{R}P^{2n}$ has dimension $2n$, Corollary 6.11 to Sard's theorem implies that the image of the $UM$ unde $G$ has measure $0$. Since $U_{2n+1} = \lbrace [v_0,...,v_{2n}] \in \mathbb{R}P^{2n}: v_{2n} \neq 0 \rbrace$ is open, this means that there exists $[w] \in U_{2n+1}$ not contained in $G(UM)$. Then $w$ is a vector in $\mathbb{R}^{2n+1}$ not contained in $\mathbb{R}^{2n}$ such that $(p,w) \not \in T_pM$ for any $p \in M$. 
+
+Let $F: \mathbb{R}^{2n+1} \rightarrow \mathbb{R}^{2n}$ be the quotient map by $w$. Since $F$ is linear, it is smooth and equal to its own differential under the canonical identification. We want to show that $DF_p$ is injective for $p \in M$. Say otherwise that $DF_p(v) = 0$ for $v \in T_pM$. That implies that $v =  \lambda w$, which implies that $(p,w) \in T_pM$, a contradiction. Therefore $F$ is an immersion on $M$. 
+
+I don't see exactly where this fails if the boundary isn't empty. Does Problem 5.6 still hold? Otherwise, perhaps to issue is that the negative of $w$ might be orthogonal to $DF$ but not contained in $UM$. 
+
+\subparagraph{6.3} {\bf Smooth lower approximation of a continuous function that vanishes on a closed set.} Let $f$ be a nonnegative smooth function such that $f^{-1}(0) = A$ (Theorem 2.29). Then $F = \frac{f}{f+1}$ is a function of the same type and $F < 1$. Let $e$ be a smooth function such that $0 < e(x) < \delta(x)$ (Corollary 6.22). Then $\tilde{\delta} = F \cdot e$ is the desired function. 
+
+\subparagraph{6.4} {\bf Smooth approximations to continuous functions.} 
+\begin{enumerate}[label=(\alph*)]
+\item Take $\tilde{d}$ as an Problem 6.3. Let $\tilde{G}$ be a smooth $\tilde{d}$-close approximation to $F \vert_{M \setminus B}$ (Theorem 6.21) and define
+\[
+\tilde{F}(x) = \begin{cases}
+    \tilde{G}(x)  & \text{if } x \in M \setminus B  \\        
+    F(x) & \text{if } x \in B 
+\end{cases}.
+\]
+Clearly $\tilde{F}$ is $\delta$-close to $F$. To see that $\tilde{F}$ is continuous, take $p \in \delta M$ and let $(U,\phi)$ be a smooth chart such that $p \in U$. Now on the one hand, by the continuity of $F$ there is a neighborhood $B_{\epsilon_1}(p)$ such that $\vert F(q) - F(p) \vert < \epsilon$ for $q \in B_{\epsilon_1}(p) \cap B$. On the other hand, since  $\tilde{d}(p)  = 0$, there is a neighborhood $B_{\epsilon_2}(p)$ such that $\vert \tilde{G}(q) - F(q) \vert < \epsilon$ for $q \in B_{\epsilon_2}(p) \cap M \setminus B$. Let $B = B_{\epsilon_1}(p) \cap B_{\epsilon_2}(p)$. It is clear that $\vert \tilde{F}(q) - \tilde{F}(p) \vert < \epsilon$ for $q \in B$. This shows that $\tilde{F}$ is continuous. 
+\item 
+\end{enumerate}
+\end{document}
