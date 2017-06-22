@@ -1,0 +1,37 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,stmaryrd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+June 2017
+\begin{center}
+\textbf{Chapter Seven: Lie Groups}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+
+\subparagraph{7.2} {\bf Differential of the multiplication map at the identity.} For $i = 1,2$, let $\gamma_i: I \rightarrow G$ be curves such that$\gamma_i(0) = e$. Let $\gamma: I \rightarrow G \times G$ be the product $\gamma(t) = (\gamma_1(t),\gamma_2(t))$. The bijection of Proposition 3.14 can be described as the map $T_eG \times T_eG \rightarrow T_{(e,e)}G\times G$ that sends $(\gamma_1'(0),\gamma_2'(0))$ to $\gamma'(0)$. Now, if $X = \gamma_1'(0) \in T_eG$, then by this bijection $(X,0) = (\gamma_1,e)'(0)$, and we can compute for any $f \in C^{\infty}(G)$
+\[ 
+[dm_{(e,e)}(X,0)](f) = \frac{d}{dt} \bigg \vert_{t = 0} f(m(\gamma_1(t),e))
+ = \frac{d}{dt} \bigg \vert_{t = 0} f(\gamma_1(t)) = X(f).
+\]
+Similarly, $dm_{(e,e)}(0,Y) = Y$. By linearity, therefore, $dm_{(e,e)}(X,Y) = X+Y$. 
+
+Now, define a map $H: G \rightarrow G \times G$ by $H(g) = (g,i(g))$. Then $m \circ H(g)$ is the constant map $g \mapsto e$, so $dm_{e,e} \circ dH_e = 0$. By the previous paragraph, $dm_{(e,e)} \circ dH_e(X) = X + di_e(X)$, so $di_e(X) = -X$. 
+
+\subparagraph{7.4} {\bf Differential of the determinant function on $\text{GL}_n(\mathbb{R})$.} Since $\text{det}(I+tA) = \text{det}(B^{-1}(I+tA)B)=\text{det}(I+tB^{-1}AB)$, we can assume without loss of generality that $A$ is triangular. Then $\text{det}(I+tA) = \prod_{n=1}^N (a_{nn}t-1) = 1 + (a_{11} + ... + a_{nn}) t + ... + a_{11} \cdot ... \cdot a_{nn} t^n$. The derivative of this expression at $t = 0$ is $\text{Tr}(A)$.  
+
+Now, if $X \in \text{GL}_{n}{\mathbb{R}}$, then for small $e$ the curve $t \mapsto \phi^{-1}(X+tB)$ is a curve $(-\epsilon,\epsilon) \rightarrow \text{GL}_n(\mathbb{R})$, where $(U,\phi)$ is the standard global chart on $\text{GL}_n(\mathbb{R})$. Then 
+\[ [d(\text{det} \circ \phi)_X (B)](f) = \frac{d}{dt} \bigg \vert_{t = 0} f(\text{det} \circ \phi \circ \gamma(t)) = f'(\text{det}(X)) \text{det}(X) \text{Tr}(X^{-1}B)
+\]
+so $d(\text{det} \circ \phi)_X = \text{det}(X) \text{Tr}(X^{-1}B)$ as desired. 
+
+\subparagraph{7.6} {\bf Bounded products.} Let $V' = m^{-1}(U)$. Since $m$ is a smooth map $G \times G \rightarrow G$, $V'$ is open. Take a basis element of the form $A \times B$ containing $(e,e)$, where $A$ and $B$ are each open in $G$, and let $V = A \cap B$. 
+
+\subparagraph{7.8} {\bf Action of a connected group on a discrete space.} For $k \in K$, let $\theta^{(k)}(g) = \theta(g,k)$. Then $\theta^{(k)}$ is a smooth map $G \rightarrow K$. Now clearly $\theta^{(k)}(e) = k$. But $(\theta^{(k)})^{-1}(k)$ and $(\theta^{(k)})^{-1}(K \setminus \lbrace k \rbrace)$ are open in $G$, and clearly $G = (\theta^{(k)})^{-1}(k) \cup (\theta^{(k)})^{-1}(K \setminus \lbrace k \rbrace)$. Since the first set is nonempty, $G =  (\theta^{(k)})^{-1}(k)$, so $g \cdot k = k$ for all $g \in G$. Since $k$ was arbitrary, this proves that the action of $G$ is trivial on $K$. 
+
+\subparagraph{7.12} {\bf Proof that smooth Lie group homomorphisms have constant rank using equivariant rank theorem.} Let $F: G \rightarrow H$ be a smooth Lie group homomorphism. Now $G$ acts smoothly on $G$ by $g' \cdot g = g'g$ and on $H$ by $g' \cdot h = F(g')h$. This action is clearly transitive on $G$, and $g' \cdot F(g) = F(g') F(g) = F(g' \cdot g)$, so $F$ is equivariant under this action. Therefore $F$ has constant rank by the equivariant rank theorem (Theorem 7.25).
+
+\end{document}
