@@ -1,0 +1,62 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,stmaryrd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+June 2017
+\begin{center}
+\textbf{Chapter Eight: Vector Fields}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+
+\subparagraph{8.2} {\bf Euler vector field.}  We need to show that for all $x \in \mathbb{R}^n \setminus \lbrace 0 \rbrace$, $(Vf)_x = V_x(f) = cf(x)$. Take an arbitrary such $x$ and define $\gamma_x(t) = (1+t)x$. Then $\gamma_x(0) = x$ and $\gamma_x'(0) = V_x$. Therefore
+\[ V_x(f) = \frac{d}{dt} \bigg\vert_{t = 0} f((1+t)x) = \frac{d}{dt} \bigg\vert_{t = 0} (1+t)^c f(x) = cf(x)
+\]
+as desired. 
+
+\subparagraph{8.4} {\bf Outward-pointing vector field on the boundary of a manifold.} Take $p \in \delta M$, let $(U,\phi)$ be a smooth boundary chart, and consider $v_p = \sum_{i=1}^n v_i \frac{d}{dx_i}\vert_p$. It is clear from the characterization in terms of curves (page 118) that if $v_n < 0$, then the $n^{\text{th}}$ coordinate is negative with respect to all coordinate representations. Now let $\lbrace (U_{\alpha},\phi_{\alpha}): \alpha \in \mathcal{A} \rbrace$ be a countable covering of $\delta M$ with smooth boundary charts and let $\lbrace f_{\alpha} \rbrace$ be a partition of unity on the manifold $\delta M$ subordinate to this cover. For all $\alpha$ and all $p \in U_{\alpha}$, let $X_{\alpha} =  d(\phi_{\alpha}^{-1})_{\phi_{\alpha}(p)}(-\frac{d}{dx_n}\vert_{\phi_{\alpha}(p)})$. Then $X = \sum_{\alpha} f_{\alpha} X_{\alpha}\vert_{\delta M}$ is a smooth map $\delta M \rightarrow TM$ such that $X_p$ is outward facing in $T_pM$ for all $p \in \delta M$. Smoothness follows from the facts that each $f_{\alpha}$ is supported in the corresponding $U_{\alpha}$ and that the sum is locally finite. Outward-facingness follows because with respect to any boundary chart, each $X_{\alpha}$ has a strictly negative $n^{\text{th}}$ coordinate and the $f_{\alpha}$s sum to $1$ at any point.
+
+In fact, $X$ is a smooth $M$ vector field along $\delta M$. For each $X_{\alpha}$ is the restriction of a smooth function on an open subset of $M$, and since the above sum is locally finite, $X$ is locally the restriction of a finite sum of smooth vector fields on $M$. Therefore Lemma 8.6 gives a global extension of $X$ to $M$. Of course, then $-X$ (i.e. $p \mapsto (p,-X_p)$) is an inward-pointing vector field. 
+ 
+\subparagraph{8.6-8} Skipped because didn't want to go back to the problem about quaternions.  
+
+\subparagraph{8.10} {\bf Computing a pushforward.} We can compute the differential of $F$:
+\[
+ DF_{(x,y)} =  
+\begin{bmatrix}
+y & x \\
+-\frac{y}{x^2} & \frac{1}{x}
+\end{bmatrix}  
+\]
+Applying this gives $F_{\ast}X = (2xy,0)$ and $F_{\ast}Y = (xy,\frac{y}{x})$. 
+
+\subparagraph{8.14} {\bf Vector field on product manifold.} The subset $\Gamma = \lbrace (x,f(x)): x \in M \rbrace \subset M \times N$ is a properly embedded submanifold (Proposition 5.7). Now the map $h: \Gamma \rightarrow T(M \times N)$ given by $(p,f(p)) \mapsto (X_p,Df_pX_p)$ is a smooth map from a closed subset of $M \times N$ to $T(M \times N)$. By Lemma 2.26, $h$ extends to a smooth map on $M \times N$. It is clear that $DF_pX_p = Y_p$ for all $p \in M$. 
+
+\subparagraph{8.15} {\bf Extending a vector field from an embedded submanifold.} Let $S \subseteq M$ be an embedded submanifold with boundary, let $(U_n,\phi_n)$ be a countable covering of $S$ with slice charts, and let $(f_n)$ be a partition of unity of $\cup_{n=1}^\infty U_n \subseteq M$. Let $\pi_n: U_n \rightarrow U_n \cap S$ be the projection onto $S$ whose coordinate represectation is $(x_1,...,x_n) \mapsto (x_1,...,x_k,0,...,0)$. Define $X_n: U_n \rightarrow TM$ as the composition $X \cap \pi_n$ and define $Y = \sum_{n = 1}^\infty f_n X_n$. Each $X_n$ is smooth as the composition of smooth maps and $Y$ is smooth because the sum is locally finite. It is also clear that $X_n \vert_{S \cap U_n} = X \vert_{S \cap U_n}$, so $Y \cap S = X$ as desired. 
+
+Recall that an embedded submanifold is properly embedded if and only if it is closed (Proposition 5.49). Now if $S$ is properly embedded, then the above implies that $X \in \mathcal{X}(S)$ is a vector field along the closed set $S$, so by Lemma 8.6 $X$ extends to a vector field on $M$. On the other hand, say that $S$ is not properly embedded and therefore not closed. We construct a vector field $X \in \mathcal{X}(S)$ that cannot be extended to $M$. Let $x$ be a limit point of $S$ not contained in $S$ and let $(x_n)$ be a sequence of distinct points in $S$ converging to $x$. Fix a chart $(U,\phi)$ containing $x$. Let $((U_n,\phi_n))$ be a sequence of slice charts for $S$ in $M$ containing each $x_n$ but not $x_m$ for $n \neq m$. An elementary argument shows that this is possible since $x_n$ converges to a point different from each $x_n$. For each $n$ let $f_n$ be a smooth bump function supported in $U_n$ and equal to $1$ in a neighborhood of $x_n$. Now $\phi$ gives an isomorphism between $T_pM$ and $\mathbb{R}^n$ for all $p \in U$, so for $n$ large enough, we can talk about the length of of a vector $v_p \in T_{x_n}S$ by first applying the differential of the inclusion and then applying this isomorphism. For each $n$, let $X_n$ be any smooth assignment of vectors of length $n$ to all points in $U_n$, and define $X = \sum_{n=1}^\infty f_n X_n$. Then $X$ is smooth, since at any point the sum only has one term, and $\Vert X_p \Vert \rightarrow \infty$ and $n \rightarrow \infty$. Therefore $X$ cannot be extended to a map $M \rightarrow TM$ that is continuous at $x$. 
+
+\subparagraph{8.17} {\bf Product of vector fields on product manifold.} $X \oplus Y$ is smooth by Proposition 8.1. For given $(p,q) \in M \times N$, we can choose a smooth chart of the form $(U \times V, \phi \times \psi)$ where $(U,\phi)$ is a smooth chart on $M$ containing $p$ and $(V,\psi)$ is a smooth chat on $N$ containing $q$. But then if $X(p) = \sum_{i=1}^m X_i(p) \frac{d}{dx_i}\vert_p = (X_1(p),...,X_m(p))$ and $Y(q) = \sum_{i=1}^n Y_i(q) \frac{d}{dy_i}\vert_q = (Y_1(q),...,Y_n(q))$ in these coordinates, then $X \oplus Y(p,q)$ has the smooth coordinate representation $(X_1(p),...,X_m(p),Y_1(q),...,Y_n(q))$. 
+
+The second part of this question can be proven with a computation using Proposition 8.26. Computations are simplified by expanding the sum in terms whether $i,j \leq n$, or $i,j > n$, or $i \leq n < j$, or $j \leq n < i$. It is clear that the last two cases have all $0$ terms and the first two cases are shown to be $[X_1,X_2]$ and $[Y_1,Y_2]$ in the coordinate representation described above. 
+
+\subparagraph{8.18} {\bf Smooth lifts.}
+\begin{enumerate}[label=(\alph*)]
+\item Such a smooth submersion is a local diffeomorphism, so for every $q \in N$, there is a neighborhood $q \in V_q \subseteq N$ and a lift $X^q$ defined on $U_q = F^{-1}(V_q)$ defined as the pushforward for $(F\vert_{U_q})^{-1}$. The set of all such $U_q$ for $q \in N$ covers $M$ since $x \in U_{F(x)}$. By uniqueness these lifts must agree on the overlaps of their domains, so the map $p \mapsto X^q_p$ for any $q$ such that $p \in U_q$ is well defined and gives a global lift of $Y$. 
+\item Let $m = \text{dim}(M)$ and $n =\text{dim}(N)$. Given $p \in M$, we can without loss of generality choose coordinates for $M$ (say $(U,\phi)$) and $N$ such that the the upper left $n \times n$ submatrix of $DF_p$ is invertible in this coordinate representation. Then the map $G: M \rightarrow N \times \mathbb{R}^{m-n}$ given by $x \mapsto (F(x),\phi^{n+1}(x),...,\phi^m(x))$ is a smooth submersion but $N \times \mathbb{R}^{m-n}$ has the same dimension as $M$. By the previous bullet there is a lift $X$ of the vector field $Y \oplus 0$ on $N \times \mathbb{R}^{m-n}$ under $G$. But the same $X$ is clearly a lift of $Y$  under $F$. 
+\item It is clear that if $X$ is the lift of any vector field, we must have $DF_p X_p = DF_q X_q$ whenever $F(p) = F(q)$, since both quantities must equal $Y_{F(p)}$. Conversely, if $X$ satisfies these conditions, we can define $Y(q) = dF_p X_p$ for any $p \in F^{-1}(\lbrace q \rbrace)$. Now by the Global Rank Theorem (Thm 4.14) and Theorem 4.26, for each $q \in N$, there exists a local section $\sigma$ of $F$. Then for $f \in C^{\infty}(N)$, $Yf = X(f \circ F \circ \sigma)$, so $Y$ is a smooth vector field $F$-related to $X$. Uniqueness follows clearly from surjectivity.
+\item The forward direction follows from Proposition 8.30. Conversely, say that $[V,X]$ is vertical whenever $V$ is vertical. For $r \in N$, let $A = F^{-1}(\lbrace r \rbrace)$ and pick $p \in A$. It is clear that $A$ is closed, since it is the preimage of a point under the smooth map $p \mapsto DF_p X_p$. We will prove that \[ B = \lbrace q \in A: DF_q X_q = DF_p X_p \rbrace \] is open in $A$. Since $A$ is connected, this proves the criterion from (c). 
+
+Note that $A$ is an embedded submanifold of $M$ by the Constant-Rank Level Set Theorem (Theorem 5.12). Pick $x \in A$ and choose a slice chart $(U,\phi)$ for $A$ in $M$ containing $x$. We can assume without loss of generality that $U$ is a coordinate ball centered at $x$, so for any $y \in U \cap A$, there is a linear path from $x$ to $y$ whose coordinate representation is $\gamma(t) = (1-t)x + ty$. Writing $x = (x_1,...,x_k,0,...0)$ and $y = (y_1,...,y_k,0,...0)$, define a vector field \[ V(z_1,...,z_n) = \sum_{i=1}^k (y_i-x_i) \frac{d}{dx}_i \bigg\vert_{(z_1,...,z_n)}. \] It is clear that $\gamma'(t) = V_{\gamma(t)}$ for all $t \in [0,1]$.  
+
+Multiplying $V$ by a bump function that is identically $1$ in a neighborhood of $\gamma(I)$ but supported in $U$ allows us to extend $V$ to a vector field on $M$, and this vector field (which we will just call $V$) is vertical. For instance, this can be seen by looking at the coordinate representations of $dF_p$ and $V$. By the hypothesis, this implies that $V \circ X(f \circ F) = 0$ for all $f \in C^{\infty}(N)$. For \[ 0 = [V,X](f \circ F) = V(X(f \circ F)) - X(V(f \circ F)) = V(X(f \circ F)) - X(0) = V(X(f \circ F)). \]
+
+Now, we want to show that \[ X_{\gamma(0)}(f \circ F) = X_{\gamma(1)}(f \circ F) \ \  \forall f \in C^{\infty}(N). \] Since $g: t \mapsto X_{\gamma(t)}(f \circ F)$ is a smooth function $I \rightarrow \mathbb{R}$, it is enough to show that $g'(s) = 0$ for all $s \in I$. But \[ \frac{d}{dt}\bigg \vert_{t=s} X_{\gamma(t)}(f \circ F) =  \frac{d}{dt}\bigg \vert_{t=s} (X(f \circ F))(\gamma(t)) = \gamma'(s) X(f \circ F) = V_{\gamma(s)} X(f \circ F) = 0  \]
+as desired. Since $y$ was arbitrary, this proves there is a neighborhood in $A$ of $x$ on which $DF_p X_p$ is constant, so $B$ is open.  
+
+\end{enumerate}
+
+\end{document}
