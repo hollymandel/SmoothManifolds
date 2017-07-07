@@ -1,0 +1,52 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,stmaryrd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+July 2017
+\begin{center}
+\textbf{Chapter Nine: Integral Curves and Flows}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+
+\subparagraph{9.2} {\bf Integral curves of a vector field tangent to a submanifold.} 
+\begin{enumerate}[label=(\alph*)]
+\item Under the identification given by the inclusion $T_pS \hookrightarrow T_pM$, the restriction of $V$ to $S$ is a smooth vector field on $S$. (Smoothness is easily seen by taking a slice chart containing $p \in S$ and projecting onto the first $k$ factors.)  Therefore for all $p \in S$ there is $\epsilon > 0$ and a curve $\eta: I = (-\epsilon,\epsilon) \rightarrow S$ such that $\eta(0) = p$ and $\eta'(s) = V_p$ for all $s \in (-\epsilon,\epsilon)$. But $i \circ \eta$ is an integral curve for $V$ starting at $p$ in $M$. By uniqueness, if $\gamma$ is any integral curve $J \rightarrow M$ for $V$ starting at $p$, then $\eta = \gamma$ on $I \cap J$. This implies that any such $\gamma$ is contained in $S$ for an interval around $0$. 
+\item Let $\gamma$ be an integral curve for $V$ starting at $p \in S$ with domain $I$. Let $A = \lbrace t \in I: \gamma(t) \in S$. The previous bullet proves that $A$ is nonempty. $A$ is closed, because if $(s_n) \rightarrow s$ and $\gamma(s_n) \in S$ for all $n$, then $\gamma(s) \in S$ since $\gamma$ is continuous and $S$ is closed. On the other hand, $A$ is open, because if $s \in A$, then $\gamma(s) \in S$, so by Proposition 9.2 there is an integral curve $\eta$ based at $\gamma(s)$ which extends $\gamma$ by uniqueness. This proves that $A = I$. 
+\item Let $U \subset \mathbb{R}$ be open and bounded, $V = \frac{d}{dx}$, and $\gamma: \mathbb{R} \rightarrow\mathbb{R}$ be the identity map.  
+\end{enumerate}
+
+\subparagraph{9.3} {\bf Computing flows.} 
+\begin{enumerate}[label=(\alph*)]
+\item $\theta((x_0,y_0),t) = (x_0 + y_0t + \frac{t^2}{2},y_0+t)$
+\item $\theta((x_0,y_0),t) = (x_0e^t,y_0e^{2t})$
+\item $\theta((x_0,y_0),t) = (x_0e^t,y_0e^{-t})$
+\item $\theta((x_0,y_0),t) = (\frac{x_0+y_0}{2}e^t+\frac{x_0-y_0}{2}e^{-t},\frac{x_0+y_0}{2}e^t-\frac{x_0-y_0}{2}e^{-t})$
+\end{enumerate}
+
+\subparagraph{9.4} {\bf A  nonvanishing vector field on $\mathbb{S}^{2n-1}$.} Under the standard injection $T_p\mathbb{S}^{n-1} \hookrightarrow T_p \mathbb{C}^{n} \simeq \mathbb{C}^n$, $V_z = (\theta^{(z)})'(0) = iz$. 
+
+\subparagraph{9.6} {\bf Proof of the Escape Lemma.} Say otherwise that there exists $t_0$ such that $\gamma([t_0,b)) \subseteq X \subseteq M$ for some $X$ compact. Assume without loss of generality that $M$ is properly embedded in $\mathbb{R}^N$, so in particular $M$ is closed in $\mathbb{R}^N$ (Theorem 6.15, Proposition 5.5). Now \[ \lim \limits_{t \rightarrow^+ b} \gamma(t) = z\] for some $z \in X$, because $\vert \gamma'(s) \vert$ is bounded and $X$ is closed and bounded in $\mathbb{R}^N$. (Take a convergent subequence $(\gamma(t_n))$ and use bounded derivative to show that if $\vert t_n - b \vert$ is small then $\vert \gamma(t_n) - z \vert$ is small.) 
+
+Let $Z = \gamma([t_0,b)) \cup z$. Considering each possible limit point of $Z$ shows that $Z$ is closed. For each $p \in Z$, let $U_p$ be a coordinate ball centered at $p$ such that $\bar{U_p}$ is compact, let $V_p = U_p/2$ be the ball of half the original radius, and let $W_p = U_p/4$ be the ball of one-quarter the original radius. Then there is a finite collection $W_1,...,W_n$ such that $Z \subseteq W_1 \cup ... \cup W_n$. Then $W = \bar{W_1} \cup ... \cup \bar{W_n}$ is a compact set containing $Z$ in its interior, $V = V_1 \cup ... \cup V_n$ is an open set containing $W$, and $U = \bar{U_1} \cup ... \bar{U_n}$ is a compact set containing $Z$. Now by Lemma 8.6, there is a vector field $\tilde{V}$ agreeing with $V$ on $W$, and supported in $V$, which is contained in the compact set $W$. Clearly $\gamma$ is an integral curve of $\tilde{V}$. By Theorem 9.16, this means that $\gamma$ is defined on $\mathbb{R}$, so we can extend $\gamma$ in a neighborhood of $z$ contained in $W$. But since $\tilde{V}$ agrees with $V$ in a neighborhood of this extension, this gives an extension of $\gamma$ past $b$, contradicting maximality. 
+
+\subparagraph{9.8} {\bf Flow neighborhood of compact submanifold is embedded.} By Theorem 9.20, there is an open neighborhood $\mathcal{O}_{\delta}$ such that $\Theta$ restricted to $\mathcal{O}_{\delta}$ is an injective smooth immersion. Covering $\mathcal{O}_{\delta}$ with basis open sets of the form $(\epsilon_p,-\epsilon_p) \times U_p$, extracting a finite subcover, and taking the minimum $\epsilon_{p}$ in this subcover, we can assume that $\mathcal{O}_{\delta}$ is of the form $(-\epsilon,\epsilon) \times S$. Now $V = [-\epsilon/2,\epsilon/2] \times S$ is a compact subset of $\mathbb{R} \times M$ by Tychonoff's theorem, and since a continuous bijection from a compact space to a Hausdorff space is a homeomorphism, $\Phi_V$ is a homeomorphism. But then the restriction of $\Phi$ to $W = (-\epsilon,\epsilon) \times S$ is a homeomorphism as well, so $\Phi$ is an embedding $W \hookrightarrow  M$. 
+
+\subparagraph{9.10} {\bf Flow charts.} 
+\begin{enumerate}[label=(\alph*)]
+\item $U = \mathbb{R}^2$, $\phi(x,y) = (x-\frac{y^2}{2},x)$. 
+\item \-\
+\item \-\ 
+\item $U = B_1(1,0)$, $\phi(x,y) = \bigg( \frac{x}{2}(\sqrt{\frac{x+y}{x-y}}+\sqrt{\frac{x+y}{x-y}}^{-1})^{-1},\frac{1}{2}\log(\frac{x+y}{x-y}) \bigg)$.
+\end{enumerate}
+
+\subparagraph{9.12} {\bf Properties of the connected sum.} The smooth structure described in Theorem 9.29 has these properties. For let $M_i$ be two manifolds, $p_i$ the two points, $U_i$ the coordinate balls, and $W_i$ tubular neighborhoods of $M_i' = M_i \setminus U_i$. As in the notation of the proof of Theorem 9.29, we write $h: \delta M_1' \rightarrow \delta M_2'$ for the diffeomorphism identifying the two boundaries, $X = M_1' \coprod M_2'$ for the quotient space induced by $h$, $Y = \pi(W_1 \coprod W_2)$, and $\Psi$ for the diffeomorphism $(-1,1) \rightarrow \delta M_1 \rightarrow Y$ whose existence is shown during the proof of the theorem. Define $\tilde{M}_1 = \pi(M_1' \cup W_2)$. It is clear that $V_1$ is open in the quotient topology on $X$. It is diffeomorphic to $M_1 \setminus \bar{U}_1$. For let $g: (-1,1) \rightarrow (-1,0)$ be a diffeomorphism that is equal to the identity for sufficiently small values. Define the map $F: \tilde{M}_1 \rightarrow M_1 \setminus \bar{U}_1$ \[ F(x) = \begin{cases} x & \text{if } x \in M_1 \setminus V_1 \\ (g(t),p) & \text{if } x \in Y \text{ and } \Psi(x) = (t,p)\end{cases}. \] 
+Then $F$ is a diffeomorphism, since for every point in $\tilde{M}_1$ there is a neighborhood on which $F$ is either the identity or the map $\Psi^{-1} \circ g \times \text{Id} \circ \Psi$. But an elementary argument shows that $M_1 \setminus \bar{U}_1$ is diffeomorphic to $M_1 \setminus p_1$. Similar reasoning shows that $\tilde{M}_2$ is diffeomorphic to $M_2 \setminus p_2$, and it is clear that $\tilde{M}_1 \cap \tilde{M}_2$ is diffeomorphic to $(-1,1) \times \mathbb{S}^{n-1}$, since $\delta M_1 \simeq \mathbb{S}^{n-1}$. 
+
+\subparagraph{9.14} {\bf Using the double to prove the Whitney Embedding Theorem for manifolds with nonempty boundary.} There is a diffeomorphism $\phi$ mapping $M$ into its double $2M$, and by the original Whitney Embedding Theorem, there is a smooth embedding $f: 2M \hookrightarrow \mathbb{R}^{2n+1}$. But then the composition $f \circ \phi$ is an embedding $M \hookrightarrow \mathbb{R}^{2n+1}$. 
+
+\subparagraph{9.16} {\bf Vector fields that agree on closed subsets may have different Lie derivatives.} Let $V = \delta_x + \sin(y) \, \delta_y$, $V' = \delta_x$, and $W = \delta y$. Taking Lie brackets (Theorem 9.38) shows that \[ L_VW(x,y) = - \cos(y) \, \delta y \] which does not vanish at $(0,0)$  but \[ L_{V'}W(x,y) = 0. \]
+\end{document}
