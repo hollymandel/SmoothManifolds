@@ -1,0 +1,46 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,stmaryrd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+July 2017
+\begin{center}
+\textbf{Chapter Ten: Vector Bundles}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+
+\subparagraph{10.1} {\bf A nontrivial vector bundle.} 
+\begin{enumerate}[label=(\alph*)]
+\item $\mathbb{Z}$ acts on $\mathbb{R}^2$ in the following way:
+\[ n \cdot (x,y) = (x+n,(-1)^ny). \] 
+Giving $\mathbb{Z}$ the discrete topology, this is a continuous action, since the map $(x,y) \mapsto n \cdot (x,y)$ is continuous for each $n$. It is clear that $\mathbb{Z}$ acts freely discontinuously. Since $\mathbb{R}^2$ is connected and locally path-connected, it follows that the quotient map $q: \mathbb{R}^2 \rightarrow E$ is a topological covering map. 
+
+To define a smooth strucure on $E$, take $p \in E$ and let $V_p$ be an evenly covered neighborhood containing $p$. Assume that $V = N_{\epsilon}(p)$ for $\epsilon < 1/2$. Let $U_p$ be the component of $q^{-1}(U)$ intersecting $[0,1] \times \mathbb{R}$ such that $\inf \limits_{(x,y) \in U} \vert x \vert$ is minimal. Then $q\vert_{U_p}^{-1}: V_p \rightarrow U_p$ is a homeomorphism of $U_p$ with an open subset of $\mathbb{R}^2$. A subset of the $U_p$ can be chosen to satisfy the countability and separation hypotheses of the Smooth Manifold Chart Lemma, and transition maps are either the identity or a shift. Therefore these charts define a smooth structure on $E$ (Lemma 1.35). It is clear that $q$ is smooth with respect to this smooth structure since its coordinate representation is either the identity or a shift and/or flip in $\mathbb{R}^2$. Also, any smooth structure on $E$ making $q$ a smooth covering map must contain all these charts, since the requirement that $q$ must be a local diffeomorphism forces these local inverses to be smooth.
+\item Let $\tilde{\phi}: \mathbb{R}^2 \rightarrow \mathbb{S}^1$ be the map $(x,y) \mapsto e^{2\pi i x}$. Then $\tilde{\phi}$ is smooth and constant on the fibers of $p$, so $\phi$ descends to a smooth map $\phi: E \rightarrow \mathbb{S}^1$ (Theorem 4.30). Now for $x \in \mathbb{S}^1$, for sufficiently small $\epsilon > 0$,   $\phi^{-1}(N_{\epsilon}(x)) = q(\tilde{\phi}^{-1}(\lbrace x \rbrace))$ is evenly covered by a disjoint union of components $I_k \times \mathbb{R} \subset \mathbb{R}^2$ for $I_k \subset \mathbb{R}$ an open interval, $k \in \mathbb{Z}$. Let $V$ be the component that is either contained on $(0,1) \times \mathbb{R}$ or intersects $0 \times \mathbb{R}$. Then $q\vert_V$ gives a diffeomorphism between $V = I \times \mathbb{R}$ and $\phi^{-1}(N_{\epsilon}(x))$. Let $F(x,y) = (e^{2 \pi i x},y)$. Then $\Phi = F \circ q \vert_V^{-1}$ is the desired local trivialization of $E$ over $ N_{\epsilon}(x)$ and clearly satisfies the projection coniditon (ii-1). Identifying points of $\phi^{-1}(U)$ with their preimages in $\mathbb{R}^2$ gives a vector space structure on $E_x$ and $\Phi$ clearly restricts to a linear map on each fiber. 
+
+\item $E$ contains a subset homeomorphic to a Mobius strip so it is not orientable, but $\mathbb{S}^1 \times \mathbb{R}$ is.
+\end{enumerate}
+\subparagraph{10.2} {\bf Projection from a vector bundle is a homotopy equivalence.} Let $\sigma: M \rightarrow E$ be the zero section. Then $\sigma$ is continuous and $\pi \circ \sigma = \text{Id}_M$. On the other hand, $F = \sigma \circ \pi$ is homotopic to $\text{Id}_E$. To see this, define $G: E \times [0,1] \rightarrow E$ that sends
+\[ (x,t) \mapsto (1-t)x. \] Then $G(p,0) = p$, and $G(p,1) = \sigma \circ \pi(p)$. To see that $G$ is continuous, cover $E$ by open neighborhoods $\pi^{-1}(U)$ such that there are local trivializations $\Phi_U: \pi^{-1}(U) \simeq U \times \mathbb{R}^k$. Define $H: U \times \mathbb{R}^k  \times [0,1] \rightarrow U \times \mathbb{R}^k$: \[ H((p,v),t) = (p,(1-t)v). \] Then \[ G\vert_U = [ (x,t) \mapsto  \Phi_U^{-1} \circ H(\Phi_U(x),t) ] \] and so $G\vert_U$ is continuous as the composition of continuous maps. This proves that $G$ is continuous. 
+
+\subparagraph{10.4} {\bf Transitions between local trivializations give smooth maps into $\text{GL}_k(\mathbb{R})$.} Let $e_1,...,e_k$ be the standard basis for $\mathbb{R}^k$. In the coordinates on $\text{GL}_k(\mathbb{R}) \subset \mathbb{R}^{k^2}$ corresponding to this basis, we can write $\tau(p) = (\tau_{ij}(p))$. Now if $\pi_2: (U \cap V) \times \mathbb{R}^k$ is the projection onto the second factor, then $F(p,v) = \pi_2 \circ \Phi \circ \Psi^{-1}(p)$ is a smooth map $U \cap V \rightarrow \mathbb{R}^k$, and $F(p,e_\ell) = (\tau_{1\ell}(p),...,\tau_{k\ell}(p))$. This proves that each $\tau_{ij}$ is a smooth function $U \cap V \rightarrow \mathbb{R}$, which proves that $\tau$ is smooth.  
+
+\subparagraph{10.6} {\bf Vector bundle construction theorem.} Let \[ E = \bigg( \coprod_{\alpha \in \mathcal{A}} U_{\alpha} \times \mathbb{R}^k  \bigg) / \sim \]
+where $(p,v) \in U_{\alpha} \times \mathbb{R}^k \sim (q,w) \in U_{\beta} \times \mathbb{R}^k$ if $p = q$ and $w = \tau_{\beta \alpha}v$. This is an equivalence relation: (10.7) gives transitivity directly, and it implies that $\tau_{\alpha \alpha} = \text{Id}$, giving reflexivity, and $\tau_{\alpha \beta} = \tau_{\beta \alpha}^{-1}$, giving symmetry. Then projection $\pi$ onto the first factor is well-defined on the equivalence classes of $E$, so $E_p = \pi^{-1}(\lbrace p \rbrace)$ is a well-defined subset of $E$. Further, $E_p$ is a vector space for each $p$. For let $[(p,v)]$ and $[(p,w)]$ be two equivalence classes in $E_p$. We can choose representatives $(p,v)$ and $(p,w)$ contained in $U_{\alpha} \times \mathbb{R}^k$ for some $\alpha$ and define $[(p,v)] + [(p,w)] = [(p,v+w)] \in E_p$. This operation is well-defined, because if we had chosen some other chart $(U,\beta)$, then we would have evaluated $(p,\tau_{\alpha \beta}v) + (p,\tau_{\alpha \beta}w) = (p,\tau_{\alpha \beta}(v+w)) \in U_{\beta} \times \mathbb{R}^k$ and these two points define the same class. 
+
+Now, for each $\alpha$, $\pi^{-1}(U_{\alpha})$ is represented by $U_{\alpha} \times \mathbb{R}^k \subseteq U$. Define the map $\Phi_{\alpha}: \pi^{-1}(U_{\alpha}) \rightarrow U_{\alpha} \times \mathbb{R}^k$ such that \[ \Phi_{\alpha}([(p,v)]) = (p,v) \] where $(p,v)$ is the representative in $U_{\alpha}$. Now for  $(q,v) \in (U_{\alpha} \cap U_{\beta}) \times \mathbb{R}^k$,  \[ \Phi_{\beta} \circ \Phi_\alpha^{-1}(q,v) = \Phi_{\beta}([(q,v) \in U_{\alpha}]) = \Phi_{\beta}([(q,\tau_{\beta \alpha}v) \in U_{\beta}]) = (q,\tau_{\beta \alpha}v).\] The map $p \mapsto \tau_{\beta \alpha}$ is certainly smooth because it is constant. Therefore, the hypotheses of Lemma 10.6 are satisfied, and $E$ is a smooth vector bundle over $M$. 
+
+\subparagraph{10.8} {\bf Image of a vector bundle under covariant functor.} The new vector bundle is $\coprod p \times \mathcal{F}(E_p)$, and the rest of the problem is using the smoothness of $\mathcal{F}$ to verify Lemma 10.6.
+
+\subparagraph{10.10} Ask someone for help with this one!
+
+\subparagraph{10.12} {\bf Conditions on transition maps guaranteeing the existence of a smooth bundle isomorphism.} Say that the collection $\lbrace \sigma_{\alpha} \rbrace$ exists as described in the problem. Define the map $E \rightarrow \tilde{E}$ as follows: given $x \in E$, let $(p,v) = \Phi_{\alpha}(x) \in U_{\alpha}$, and let $F(x) = y$ where $y$ is the unique point such that $\tilde{\Phi}_\alpha(y) = (p,\sigma_\alpha(v))$. Then $F$ is well-defined. For if $x \in U_{\alpha} \cap U_{\beta}$, then $\Phi_\beta(x) = (p,\tau_{\beta \alpha}v)$, and $\tilde{\Phi}_{\beta}(y) = \tilde{\tau}_{\beta \alpha} \sigma_\alpha v$, which is equal to $\sigma_\beta \tau_{\beta \alpha}v$ by the relation. It is clear that $F$ defined this way is a bundle homomorphism over $M$. It is smooth because in a neighborhood of each point it can be written as the composition of smooth maps. Since the inverse is constructed the same way, interchanging the role of $E$ and $\tilde{E}$, it is also a smooth bundle homomorphism, so $F$ is a smooth bundle isomorphism. 
+
+Conversely, say a smooth bundle isomorphism exists. For each $\alpha$ define the smooth map $\sigma_\alpha(p): v \mapsto \pi_2 \circ  \tilde{\Phi}_{\alpha} \circ F \circ \Phi_{\alpha}^{-1}(p,v)$. If $w = \tau_{\beta \alpha}v$, then $\phi_{\beta}^{-1})(p,w) = \phi_{\alpha}^{-1}(p,v)$, so $\sigma_\beta(p)w = \tilde{\tau_{\beta \alpha}}\sigma_{\alpha}(p)v$, which gives the desired relation.
+
+\subparagraph{10.14} {\bf Tangent bundle to an embedded submanifold is a subbundle.} Apply Lemma 10.32 to the local frame corresponding to a slice chart at each point.
+ 
+\end{document}
