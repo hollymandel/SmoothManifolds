@@ -1,0 +1,65 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,stmaryrd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+July 2017
+\begin{center}
+\textbf{Chapter Eleven: The Cotangent Bundle}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+
+\subparagraph*{11.2} {\bf The algebraic dual to an infinite-dimensional vector space.} 
+\begin{enumerate}
+\item Let $(v_n)$ be a basis for $V$ and define $w_n$ dual to $v_n$, so that $w_n(\sum_{k=1}^\ell c_{n_k} v_{n_k}) = c_n$. Let $\Phi: V \rightarrow V^{\ast}$ be defined \[ \Phi(\sum_{k=1}^\ell c_{n_k} v_{n_k}) = \sum_{k=1}^\ell c_{n_k} w_{n_k}. \] Then if $v = \sum_{k=1}^\ell c_{n_k} v_{n_k}$ and $\Phi(v) = 0$, $[\Phi(v)](w_{\ell}) = c_{\ell} = 0$ for all $\ell$, so $v = 0$. Therefore $\Phi$ is injective. 
+\item For $S \in \text{Pow}((v_n))$, let $w_\ell = \sum_{i_s \in S} w_{\ell}$. Let $(u_n)$ be a subset of $w_\ell$ that is linearly independent over $\mathbb{Z}$. RIGHT CARDINALITY? 
+\item Part one implies there is an injection $g: V^{\ast} \hookrightarrow V^{\ast \ast}$. If there were such an isomorphism $f: V \rightarrow V^{\ast \ast}$, then the composite map $f^{-1} \circ g$ would be an injection $V^{\ast} \rightarrow V$, contradicting the second part. 
+\end{enumerate}
+
+\subparagraph*{11.4} {\bf Functions that vanish at a point.}
+\begin{enumerate}
+\item The important thing I didn't realize is that $\ell_p^2$ is the {\it span} of products of function in $\ell_p$. If I had a dollar for every time I didn't realize I could take the span...
+
+Given $p$, choose a local coordinate system such that $p = 0$. In these coordinates, say that $f(0) = 0$ and $\frac{df}{dx_i}(0) = 0$. Then by Taylor's theorem, there are finitely many functions $f_{\alpha}$, determined by integrating higher-order derivatives of $f$, such that $f = \sum_{\alpha} x^ix^j f_{\alpha}(x_1,...,x_k)$. Since each expression $x^i$ vanishes at $0$, $f$ is therefore in $\ell_p^2$. 
+
+The converse is shown by simply calculating the derivative in arbitrary coordinates. 
+\item It is clear from the coordinate formula (11.10) that if all first-order derivatives vanish, the differential is $0$, so by the first part of this question, $\Phi$ vanished on $\ell_p^2$. Therefore $\Phi$ is well-defined (and clearly linear) on $\ell_p/\ell_p^2$. It is surjective because, again using coordinates centered at $p$, if $v = \sum_{i=1}^k v_i dx_i \in T_p^{\ast}(M)$, then $f(x) = \sum_{i=1}^k v_i x_i$ satisfies $\Phi(f) = v$ and $f \in \ell_p$. It is injective, because if $df_p = 0$ and $f(p) = 0$, then it is clear (11.10) that the first-order Taylor polynomial of $f$ vanishes.
+\end{enumerate}
+\subparagraph*{11.6} {\bf Some statements about when real functions define local coordinates.}
+\begin{enumerate}
+\item We show that the map $x \mapsto (y^1(x),...,y^k(x))$ is nonsingular at $p$. Let $(U,\phi)$ be a coordinate system for $M$ such that $p \in U$ and let $\frac{d}{dx_i}\vert_p$ be the corresponding basis for $T_pM$. Now for any vector space $V$, if $e_1,...,e_k$ is a basis for $V$ and $f_1,...,f_k$, then the matrix $(f_i(e_j))$ is linearly independent. For say there exist constants such that $\sum_{i=1}^k c_k f_k(e_j) = 0$ for all $j$. Then $\sum_{i=1}^k c_k f_k$ is the zero form, so $c_k = 0$ for all $k$. Since $dy^i_p(\frac{d}{dx_j}\vert_p) = \delta_j (y^i \circ \phi^{-1}(p))$, this shows that $F \circ \phi^{-1}$ is a regular function $\mathbb{R}^n \rightarrow \mathbb{R}^n$. Therefore it maps a neighborhood of $\phi(p)$ to a neighborhood of $F(p)$. Since $\phi$ is a diffeomorphis, this suffices to show that $F$ gives a coordinate chart for some neighborhood of $F(p)$. 
+\item Pick vectors $w_{k+1},...,w_n$ extending $dy^1_p,...,dy^n_p$ to a basis for $T_pM$, and then define functions $y^{k+1},...,y^n$ in a neighborhood of $p$ such that $d(y^\ell)_p = w_\ell$ for $\ell = k+1,...,n$ (for instance by working in coordinates and multiplying a bump function constant at $p$ by an appropriate linear function). Then apply the first part.
+\item Select a basis from among the $\lbrace dy^\ell_p \rbrace$ and apply the first part. 
+\end{enumerate}
+
+\subparagraph*{11.8} {\bf A functor from a category of smooth manifolds to vector bundles.} 
+\begin{enumerate}
+\item The map $dF^{\ast}: T^{\ast}N \rightarrow T^{\ast}M$ is defined \[ (p,v)  \mapsto (F^{-1}(p),dF^{\ast}_{F^{-1}(p)}v). \] Since $dF^{\ast}$ is a bundle homomorphism over $F^{-1}$ by this definition, it only remains to show that it is smooth. Let $(U,\phi)$ be a chart for $M$ containing $p$. Then since $F$ is a diffeomorphism, $(F^{-1}(U),\phi \circ F)$ is a smooth chart for $N$ containing $q$. But a computation shows that $dF^{\ast}$ is the identity map in these coordinates, so it is smooth.
+\item These properties follow directly from the corresponding properties of the dual map (Proposition 11.4). 
+\end{enumerate}
+
+\subparagraph*{11.10} {\bf Computing coordinate representations of differentials.}
+\begin{enumerate}
+\item $df_{(x,y)} = \frac{y^2-x^2}{(x^2+y^2)^2} dx + \frac{-2xy}{(x^2+y^2)^2} dy$. Does not vanish on $M$. 
+\item $df_{(r,\theta)} = \frac{-\cos(\theta)}{r^2} dr + \frac{-\sin(\theta)}{r} d\theta$. 
+\end{enumerate}
+
+\subparagraph*{11.12} {\bf Connected manifolds are smoothly path-connected.} Take $p \in M$ and let $S$ be the set of points in $M$ that can be connected to $p$ by a smooth path. $S$ is open because given $q \in S$, a path from $p$ to $q$ can be extended to a smooth path to any point in a neighborhood of of $p$. For say $\gamma(0) = p$, $\gamma(1) = q$, and $\gamma$ is smooth. Take a coordinate ball centered at $q$ and let $q'$ be a point in this coordinate ball. Let $f: [0,1] \rightarrow [0,1]$ be a smooth increasing surjective function that is constant on a neighborhood of $1$. Let $g: [1,2] \rightarrow \mathbb{R}$ be a smooth increasing function such that $g(x) = 0$ for $x$ in a neighborhood of $0$ and $g(2) = 1$. Such functions can be constructed by integrating smooth bump functions. Then define $\eta: [0,2] \rightarrow M$ as follows: \[ \gamma(t) = \begin{cases} \gamma \circ f(t) & t \in [0,1] \\ q' \cdot g(t) + q \cdot (1-g(t)) & t \in [1,2] \end{cases}. \] Then $\eta$ is a path from $p$ to $q'$, and it is smooth. For both functions in the expansion of $\eta$ are constant in a neighborhood of $2$. It can be checked that if $\alpha: (-\epsilon,0] \rightarrow \mathbb{R}$ and $\beta: [0,\epsilon) \rightarrow \mathbb{R}$ are smooth functions such that $\lim \limits_{t \rightarrow^+ 0} \alpha^{(k)}(t) = \lim \limits_{t \rightarrow^- 0} \beta^{(k)}(t)$ for all $k \leq j$, then the concatenation of $\alpha$ and $\beta$ is $j$-times continuously differentiable. 
+
+On the other hand, $S$ is closed, because if $q \in \delta S$, any chart containing $q$ contains an element $q'$ of $S$, and then the same argument produces a smooth path from $p$ to $q$ by extending the path terminating in $q'$.
+
+\subparagraph*{11.14} {\bf Line integrals} 
+\begin{enumerate}
+\item $\int_{\gamma} \omega = 2 \log(2) - 1$; $\int_{\gamma} \eta = 1+ \log(2)$. 
+\item Since the vector fields are defined on $\mathbb{R}^3$, it suffices to check (11.21). $\omega$ is not exact because \[ \omega^1_z = \frac{-4}{(x^2+1)^2} \] while \[ \omega^3_x = \frac{2 -2x^2}{(x^2+1)^2}. \] Checking each cross-term as in (11.21) shows that $\eta$ is exact.
+\item A computation as in Example 11.51 gives a potential function $\eta = df$, \[ f(x,y,z) = \frac{2z}{x^2+1} + \log(y^2+1). \] This agrees with the computed integral. 
+\end{enumerate}
+
+\subparagraph*{11.16} {\bf No nonvanishing exact covector fields on compact manifolds.} 
+Write $\omega = df = \frac{df}{dx_j} dx_j$ for some smooth function $f$. Now since $M$ is compact, $f$ attains a maximum and minimum on $M$. Either $f$ is constant, or there is at least one point achieving the global maximum and one other point achieving the global minimum on $M$, and at these two points, all derivatives of $f$ vanish, so by the coordinate formula (11.10), $\omega = 0$ at these two points. 
+
+\subparagraph*{11.18} {\bf Naturality.} Done on paper (didn't write up). 
+\end{document}
