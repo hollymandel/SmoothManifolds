@@ -1,0 +1,54 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,pst-node,stmaryrd,tikz-cd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+July 2017
+\begin{center}
+\textbf{Chapter Twelve: Tensors}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+\subparagraph*{12.2} {\bf Tensoring with the base field.} We show that $\mathbb{R} \otimes V \simeq V$; the proof for $V \otimes \mathbb{R}$ is identical. Define a map $\Phi_V: \mathbb{R} \times V \rightarrow V$ that sends $(r,v) \mapsto r \cdot v$.  Then $\Phi_V$ is bilinear, so by the universal property (Prop 12.7) it descends to a linear map on $\mathbb{R} \otimes V$, which by the commutativity of the diagram (12.6) sends the simple tensor $r \otimes v$ to $r \cdot v$ and extends linearly. Now define $\Theta_V: V \rightarrow \mathbb{R} \otimes V$ that sends $v \mapsto 1 \otimes v$. It is easily checked that $\Theta_V$ and $\Phi_V$ are inverse when $\Phi$ is restricted to simple tensors, which implies that they are inverse maps by linearity.
+
+We show the sense in which this isomorphism is canonical. Let \text{Vec}$_{\mathbb{R}}$ be the category of real vector spaces and linear maps. Let $\mathcal{F}$ be the identity functor and let $\mathcal{G}$ be the covariant functor that sends $V \mapsto \mathbb{R} \otimes V$ and $T \mapsto 1 \otimes T$. If $V$ and $W$ are vector spaces and $T: V \rightarrow W$ a linear map, then $1 \otimes T \circ \Phi_V (v) = 1 \otimes Tv$ while $\Phi_W \circ T(v) = 1 \otimes Tv$. Therefore the map $V \mapsto \Phi_V$ is canonical in the sense of Problem 11-18. 
+
+\subparagraph*{12.4} {\bf Canonical isomorphism $V_1^{\ast} \otimes ... \otimes V^{\ast}_k \otimes W \simeq L(V_1,...,V_k;W)$.}  Define the map $\Phi_V: V_1^{\ast} \times ... \times V^{\ast}_k \times W \rightarrow L(V_1,...,V_k;W)$   \[ (f_1,...,f_k,w) \mapsto  \bigg( v \mapsto \bigg( \prod_{n=1}^k f_n(v) \bigg) \, w \bigg). \] This gives a multilinear map that descends to a linear map  $V_1^{\ast} \otimes ... \otimes V^{\ast}_k \otimes W \simeq L(V_1,...,V_k;W)$. The inverse is easily constructed by choosing a basis $(e_i^n)$ for each $V_n$ and $w_i$ for $W$ and then using the observation that functions of the form $(e^1_{i_1},...,e^n_{i_n}) \mapsto w_\ell$ span $L(V_1,...,V_k,W)$, and the existence of this inverse proves that $\Phi_V$ is an isomorphism, regardless of the choice of basis we made to construct it. 
+
+It can be checked that the assignment $V \mapsto \Phi_V$ is canonical, where $C$ is the category of products of $k+1$ vector spaces with products of linear maps, $D$ is $\text{Vec}_{\mathbb{R}}$, $\mathcal{F}$ sends $(V_1,...,V_k,W)$ to $V_1^{\ast} \otimes ... \otimes V_k^{\ast} \otimes W$ and \[ (T_1,...,T_k,S) \mapsto T_1^{\ast} \otimes ... \otimes T_k^{\ast} \otimes S \] while $\mathcal{G}$ sends $(V_1,...,V_k,W)$ to $L(V_1,...,V_k; W)$ and \[ (T_1,...,T_k,S) \mapsto \bigg( f(v_1,...,v_k) \mapsto S \cdot f(T_1v_1,...,T_kv_k)\bigg).\] This makes sense because our construction of $\Phi_V$ did not involve choosing a basis. 
+
+
+\subparagraph*{12.8} {\bf Transformation law for covariant tensors.} 
+\begin{dmath*}
+A_{i_1,...,i_k} = A(\frac{d}{dx_{i_1}} \otimes ... \otimes \frac{d}{dx_{i_k}})
+= \sum_{j_1,...,j_n} \tilde{A}_{j_1,...,j_k} d\tilde{x}^{j_1} \otimes ... \otimes d\tilde{x}^{j_k} \bigg( \frac{d}{dx_{\ell_1}} \otimes ... \otimes \frac{d}{dx_{\ell_k}} \bigg)
+= \sum_{j_1,...,j_n}  \sum_{\ell_1,...,\ell_k} \bigg( \prod_{n=1}^k \frac{d\tilde{x}^{j_n}}{dx_{\ell_n}} \bigg) \tilde{A}_{j_1,...,j_k} d\tilde{x}^{j_1} \otimes ... \otimes d\tilde{x}^{j_k} \bigg( \frac{d}{dx_{\ell_1}} \otimes ... \otimes \frac{d}{dx_{\ell_k}} \bigg)
+= \sum_{j_1,...,j_n}   \bigg( \prod_{n=1}^k \frac{d\tilde{x}^{j_n}}{dx_{i_n}} \bigg) \tilde{A}_{j_1,...,j_k} 
+\end{dmath*}
+
+\subparagraph*{12.10} {\bf Pullback and pushforward of mixed tensor fields by diffeomorphisms.} 
+Take $p \in N$ and $A \in \Gamma(T^{(k,l)}TN)$. For $\lbrace v_i \rbrace \in T_pM^{\ast}$ and $\lbrace w_i \rbrace \in T_pM$, let $X_i$ be covector fields such that $X_i(p) = v_i$ and let $Y_i$ be vector fields such that $Y_i(p) = w_i$. define \[ (F^{\ast}A)_{F^{-1}(p)}(v_1,...,v_k,w_1,...,w_\ell) = A_p((F^{-1\ast}X_1)_p,...,(F^{-1 \ast}X_k)_p,(F_{\ast}Y_1)_p,...,(F_{\ast}Y_\ell)_p). \]
+Then $p \mapsto (F_{\ast}A)_p$ is a rough section of $T^{(k,\ell)}TM$ and agrees with the pullback on covariant vector fields. On the other hand, take $B \in \Gamma(T^{(k,l)}TM)$.  For $\lbrace v_i \rbrace \in T_pN^{\ast}$ and $\lbrace w_i \rbrace \in T_pN$, let $X_i$ be covector fields such that $X_i(p) = v_i$ and let $Y_i$ be vector fields such that $Y_i(p) = w_i$. Then define 
+\[ (F_{\ast}B)_p(v_1,...,v_k,w_1,...,w_\ell) = B_{F^{-1}(p)}((F^{\ast}X_1)_p,...,(F^{\ast}X_k)_p,(F_{\ast}^{-1}Y_1)_p,...,(F^{-1}_{\ast}Y_\ell)_p). \]
+Then $q \mapsto (F_{\ast}B)_q$ is a rough section of $T^{(k,\ell)}TN$ and agrees with the pullback on vector fields.
+These sections are smooth because they are the composition of the maps from points of $M$ to a product of smooth vector and covectors fields, and the application of a smooth tensor field. I verified properties (a.)-(f.) on paper.
+
+\subparagraph*{12.12} {\bf Alternative definition of the Lie derivative.} We have already observed that the Lie derivative satisfies these properties (Proposition 12.32). To show uniqueness, say $R$ satisfies these properties. Be show that $R = \mathcal{L}_V$ on $\mathcal{T}^k(M)$ by strong induction on $k$. The case where $k = 0$ is immediate from property (b.). The case $k = 1$ then follows from property (d.), since for $\omega \in \mathcal{T}^1(M)$, \[ (R(\omega))(X) = R(\omega(X)) - \omega([V,X]) = \mathcal{L}_V(\omega(X)) - \omega([V,X]) = \mathcal{L}_V(\omega)(X), \] and two covector fields agree if they agree on all vector fields. 
+
+For the inductive step, take $p \in M$ and let $(f_n)$ be a smooth covector field on $M$ that restricts to a local frame for $T^{\ast}M$ on a domain containing $p$. Then by the associativity of the tensor product, (c.), and the strong inductive hypothesis, we have that
+\begin{dmath*}
+ R(f_{i_1} \otimes ... \otimes f_{i_k}) = R(f_{i_1} \otimes ... \otimes f_{i_{k-1}}) \otimes f_{i_k} + (f_{i_1} \otimes ... \otimes f_{i_{k-1}}) \otimes R(f_{i_{k}}) 
+ =  \mathcal{L}_V(f_{i_1} \otimes ... \otimes f_{i_{k-1}}) \otimes f_{i_k} + (f_{i_1} \otimes ... \otimes f_{i_{k-1}}) \otimes \mathcal{L}_V(f_{i_{k}}) 
+ =  \mathcal{L}_V(f_{i_1} \otimes ... \otimes f_{i_k})
+\end{dmath*}
+(This is where (d.) is required -- it is not enough to establish the base case $k = 0$, we need to be able to bring down basis tensors by a rank.) Now given an arbitrary section $A \in \mathcal{T}^kM$, we can write $A(p) = \sum_{i_1,...,i_k} f_{\alpha}(p) f_{i_1} \otimes ... \otimes f_{i_k}$. Then by properties (a.) and (c.),
+\begin{dmath*}
+R(\sum_{i_1,...,i_k} f_{\alpha}(p) f_{i_1} \otimes ... \otimes f_{i_k}) = \sum_{i_1,...,i_k} R(f_{\alpha}(p) f_{i_1} \otimes ... \otimes f_{i_k})
+=  \sum_{i_1,...,i_k} \bigg( R(f_{\alpha}(p)) \otimes  f_{i_1} \otimes ... \otimes f_{i_k} + f_{\alpha} \otimes R(f_{i_1} \otimes ... \otimes f_{i_k}) \bigg)
+=  \sum_{i_1,...,i_k} \bigg( \mathcal{L}_V(f_{\alpha}(p)) \otimes  f_{i_1} \otimes ... \otimes f_{i_k} + f_{\alpha} \otimes \mathcal{L}_V(f_{i_1} \otimes ... \otimes f_{i_k}) \bigg)
+= \mathcal{L}_V(\sum_{i_1,...,i_k} f_{\alpha}(p) f_{i_1} \otimes ... \otimes f_{i_k}).
+\end{dmath*}
+This proves uniqueness. 
+\end{document}
