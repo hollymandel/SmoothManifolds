@@ -1,0 +1,74 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,pst-node,stmaryrd,tikz-cd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+August 2017
+\begin{center}
+\textbf{Chapter Sixteen: Integration on Manifolds}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+\subparagraph*{16.1} {\bf Volume of a parallelipiped.} Let $F: [0,1]^n \rightarrow P$ be the map $(x_1,...,x_n) \mapsto \sum_{i=1}^n x_i v_i$. Then it follows from the change of variables formula that \[ \int_P 1 \, dV = \int_{[0,1]^n} \vert \text{det}(DF) \vert \,  dV = \vert \text{det}(v_1,...,v_n) \vert. \]
+
+\subparagraph*{16.2} {\bf Computing an integral.} We use the strategy of Proposition 16.8. The map $F: (0,2\pi)^2 \rightarrow \mathbb{T}$ defined by $(s,t) \mapsto (\cos(s),\sin(s),\cos(t),\sin(t))$ gives a diffeomorphism onto a dense subset of $\mathbb{T}$, so Proposition 16.8 gives that $\int_{\mathbb{T}} \omega = \int_{(0,2\pi)^2} F^{\ast}\omega$. We compute
+\begin{dmath*} \int_{(0,2\pi)^2} F^{\ast}\omega = \int_{(0,2\pi)^2} \sin^2(s) \sin^2(t) \cos(t) \, ds \, dt = \int_0^{2\pi} \sin^2(s) \, ds \ \int_0^{2\pi} \sin^2(t) \cos(t) \, dt = 0.
+\end{dmath*}
+
+\subparagraph*{16.3} {\bf Integrating over a generalized covering space.} (Part (i.) only) Let $D \subset M$ be the support of $\omega$ and let $U_n: n = 1,...,N$ be a cover of $M$ with evenly covered charts $(U_n,\phi_n)$. For each $n$, let $U_n^m: m=1,...,k$ be the components of $\pi^{-1}(U_n)$. Then $(U_n^m)$ is an open cover of $\pi^{-1}(D)$ and each $(U_n^m,\phi_n \circ \pi)$ is a smooth chart. Let $\psi_{n,m}$ be the corresponding partition of unity. We compute
+\begin{dmath*}
+\int_E \pi^{\ast}\omega = \sum_{n,m} \int_{E} \psi_{n,m} \, \pi^{\ast} \omega 
+= \sum_{n,m} \int_{\phi_n(U_n)} ((\phi_n \circ \pi\vert_{U_n^m}^{-1})^{-1})^{\ast} \, \psi_{n,m} \, \pi^{\ast} \, \omega 
+= \sum_{n,m} \int_{\phi_n(U_n)} \psi_{n,m} \circ (\phi_n \circ \pi\vert_{U_n^m}^{-1})^{-1} \cdot  (\phi_n^{-1})^{\ast} \omega 
+\end{dmath*}
+Since $\psi_{n,m}$ is supported within $U_n^m$, we can extend $\psi_{n,m} \circ \pi \vert_{U_n^m}^{-1}$ by zero to define a smooth function on $M$. Let $F_n = \sum_{m=1}^k \frac{1}{k} \cdot \psi_{n,m} \circ \pi \vert_{U_n^m}^{-1}$. We claim that $(F_n)$ is a partition of unity on $M$ subordinate to $(U_n)$. The range of $F_n$ is clearly between $0$ and $1$ and $F_n$ is clearly supported within $U_n$. Since this collection is finite it is certainly locally finite. Finally,
+\[ \sum_{n=1}^N F_n(x) = \frac{1}{k} \sum_{n=1}^N \sum_{m=1}^K \psi_{n,m} \circ \pi\vert_{U_n^m}^{-1}(x)
+= \frac{1}{k} \sum_{m=1}^k \sum_{n=1}^N \psi_{n,m} \circ \pi\vert_{U_n^m}^{-1}(x)
+= \frac{1}{k} \sum_{m=1}^k 1 = 1. \]
+Therefore
+\begin{dmath*}
+\frac{1}{k} \int_E \pi^{\ast} \omega = \frac{1}{k} \sum_{n,m} \int_{\phi_n(U_n)} \psi_{n,m} \circ (\phi_n \circ \pi\vert_{U_n^m}^{-1})^{-1} \cdot  (\phi_n^{-1})^{\ast} \omega 
+= \sum_{n=1}^M \int_{\phi_n(U_n)} \bigg( \frac{1}{k} \sum_{m=1}^k \psi_{n,m} \circ \pi\vert_{U_n^m}^{-1}\bigg) \circ \phi_n^{-1} \cdot  (\phi_n^{-1})^{\ast} \omega
+= \int_M \omega.
+\end{dmath*} 
+
+\subparagraph*{16.4} {\bf A compact oriented manifolds cannot retract smoothly onto its boundary.} Let $\omega$ be an orientation form on $\delta M$, whose existence is guaranteed by Proposition 15.5. Say first that $F: M \rightarrow \delta M$ is a smooth retraction, so $F \circ i = \text{Id}_{\delta M}$. Then \[ \int_M \delta \omega = \int_{\delta M} (F \circ i)^{\ast} \omega = \int_{\delta M} i^{\ast} F^{\ast} \omega = \int_M \delta(F^{\ast} \omega) = \int_M F^{\ast} \delta \omega, \]
+where the second-to-last inequality follows from Stokes' theorem. But $F^{\ast} \delta \omega = 0$. For the Jacobian of $DF_p$ has rank at most $n-1$, while $\delta \omega$ is an $n$ form. On the other hand, in any oriented coordinate chart $(U,(x^i))$ on $\delta M$, $\omega$ has a coordinate representation $f(x_1,...,x_n) \cdot dx_1 \wedge ... dx_n$ with $f(x_1,...,x_n) > 0$. Therefore $\int_M \delta \omega > 0$. This contradiction proves that such an $F$ cannot exist.
+
+Now, say $F$ is a merely continuous retraction $M \rightarrow \delta M$. By the Whitney Approximation Theorem (6.26) $F$ is homotopic to a smooth map $G: M \rightarrow \delta M$. Further, since $F$ is the identity map on $\delta M$, $F$ is smooth on $\delta M$, so the homotopy can be taken relative to $\delta M$. But this implies that $G$ is a smooth retraction $M \rightarrow \delta M$, so we are reduced to the first case. 
+
+\subparagraph*{16.5} {\bf Homotopic diffeomorphisms are either both orientation-preserving or both orientation-reversing.} By Theorem 6.29, if $F$ and $G$ are homotopic then they are smoothly homotopic. Let $H$ be the smooth homotopy, so $H(x,0) = F(x)$ and $H(x,1) = G(x)$. Note that $\delta (M \times I) = M \times \lbrace 0 \rbrace \cup M \times \lbrace 1 \rbrace$. Let $\omega$ be an orientation form on $N$. Then \[ \int_{\delta(M \times I)} H^{\ast} \omega = \int_{M \times \lbrace 0 \rbrace} H^{\ast} \omega + \int_{M \times \lbrace 1 \rbrace} H^{\ast} \omega. \]
+
+Now if $(U,\phi)$ is a positively oriented chart for $M$, then $(U \times \lbrace 0 \rbrace,\phi(x_1,...,x_n,0))$ is a negatively oriented chart and $(U \times \lbrace 1 \rbrace,\phi(x_1,...,x_n,1))$ is a positively-oriented chart in the boundary orientation. For in the first case the outward-pointing normal vector points in the negatively oriented direction along $\mathbb{R}$, and in the second case it points in the positively-oriented direction. 
+
+Assume first that $N$ is contained in the domain of a single chart oriented. We can take $\omega$ to be the corresponding $n$-form. Write $H_t(p) = H(t,p)$. Then $M$ is as well, since it is diffeomorphic to $N$. Let $(x^i)$ be coordinates on $N$ and let $(y^i) = (x^i \circ H_0)$ be coordinates on $M \times \lbrace 0 \rbrace$. Examining the coordination expansion of $H^{\ast}\omega$, we see that 
+\begin{dmath*}
+ H^{\ast}dx^1 \wedge ...\wedge dx^n = \sum  \frac{dH^1}{dy_{j_1}}(p,0) \cdot ... \cdot \frac{dH^n}{dy_{j_n}}(p,0) dy^{j_1} \wedge ... \wedge dy^{j_n} = \text{det}(dH(p,0)) dy^1 \wedge ... \wedge dy^n = \text{det}(dF(p)) dy^1 \wedge ... \wedge dy^n = F^{\ast}dx^1 \wedge ... \wedge dx^n.
+\end{dmath*}
+We can remove that assumption that $N$ be contained in a single chart by applying the above result to all the terms in the sum for the integral $\int_{M \times \lbrace 0 \rbrace} H^{\ast} \omega$. Combined with the above discussion of orientation, this shows that 
+\[ \int_{M \times \lbrace 0 \rbrace} G^{\ast} \omega - \int_{M \times \lbrace 0 \rbrace} F^{\ast} \omega = \int_{M \times I} d(H^{\ast}\omega). \]
+However, $d \omega = 0$ because it is an $n+1$ form on $N$. Therefore \[ \int_{M \times I} d(H^{\ast}\omega) = \int_{M \times I} H^{\ast} d\omega = 0. \]
+
+\subparagraph*{16.6} {\bf The Hairy Ball Theorem.} 
+\begin{enumerate}
+\item $a \rightarrow b$: Let $V: \mathbb{S}^n \rightarrow \mathbb{S}^n$ be a nowhere-vanishing vector field. We identify tangent vectors to $\mathbb{S}^n$ with elements of $\mathbb{R}^{n+1}$ through the canonical isomorphism between $T_pM$ and $\mathbb{R}^n$ when $M$ is an $n$-dimensional embedded submanifold of $\mathbb{R}^k$. We have shown that $\langle v,x \rangle = 0$ for all $v \in T_x\mathbb{S}^n$. Therefore $V(x)$ is the desired map. 
+\item $b \rightarrow c$: ?
+\item $c \rightarrow d$: This follows directly from the previous problem.
+\item $d \rightarrow e$: Let $v^1_p,...,v^n_p$ be an oriented collection of vectors in $T_p\mathbb{S}^n$. Then if $\omega$ is an orientation form on $\mathbb{R}^{n+1}$, \[ \alpha^{\ast}(i_{N(p)}\omega) (v^1_p,...,v^n_p) = \omega_{-p}(-p,D\alpha_p v^1_p,...,D\alpha_p v^n_p) = (-1)^{n+1} \omega_{-p}(p,v^1_p,...,v^n_p). \] This $\alpha$ is orientation-preserving only if $n$ is odd. 
+\item $e \rightarrow a$: This was Problem 9-4. 
+\end{enumerate}
+
+\subparagraph*{16.7} {\bf Products of manifolds with corners.} We note that if $A \subset X$ is open and $B \subset Y$ is open, then $A \times B \subset X \times Y$ is open by the definition of the product topology. Also, it is clear that $\mathbb{R}^n_{\geq 0} \times \mathbb{R}^m_{\geq 0} = \mathbb{R}^{n+m}_{\geq 0}$. Now, let $M$ and $N$ be manifolds with corners and let $(p,q)$ be a point in $M \times N$. If $p$ and $q$ are non-corner points, it is clear that $(p,q)$ is a non-corner point. Say $p$ is a corner point and $q$ is not. Let $(U,\phi)$ be a corner chart for $p$ and let $(V,\psi)$ be a non-corner chart for $q$. Since we can choose a precompact chart for $q$, we can shift $\psi(V)$ so that it is an open subset of $\mathbb{R}^m_{\geq 0}$. Then $(U \times V, \phi \times \psi)$ is a corner chart for $(p,q)$. It is smooth because transition maps are given by the product of the transition maps from the original charts, which were smooth.  Clearly the argument is similar if $q$ is a corner point and $p$ is not. Finally, if $p$ and $q$ are both corner points, then the product of their corner charts is a corner chart without the need for a shift. Induction extends this argument from pairs to finite products.
+
+The product of two manifolds with boundary is not necessarily a smooth manifold with boundary. For instance, $I \subset \mathbb{R}$ is a manifold with boundary but $I^2 \subseteq \mathbb{R}^2$ is not a smooth manifold with boundary. For say $(U,\phi)$ is a chart containing the point $(1,1) \in I^2$. We must have that $\phi$ maps interior points (as a subset of $\mathbb{R}^2$ of $\phi(U)$ to interior points of $I^2$, since $\phi^{-1}$ is a diffeomorphism. Therefore $\phi^{-1}$ gives a smooth map between $U \cap \lbrace (x,y): y = 0 \rbrace$ and $\delta I^2$. Let $\gamma(t) = (0,t)$ for $t \in (-\epsilon,\epsilon)$. Then $\phi^{-1} \circ \gamma(t)$ is a smooth curve $(-\epsilon,\epsilon) \rightarrow I^2$ with nonvanishing derivative that passes through $(1,1)$. A little work shows that this curve must enter the corner from one side of $I^2$ and pass up the adjacent side. (Maybe take a homeomorphism of this corner with the line and use connectedness.) But it is clear that the derivative of this curve cannot be continuous at $0$. 
+
+\subparagraph*{16.9} {\bf A closed, not exact $n-1$ form on $\mathbb{R}^n\setminus \lbrace 0 \rbrace$.} 
+To see that $i^{\ast}_{\mathbb{S}^{n-1}}\omega$ is the Riemannian volume form on $\mathbb{S}^{n-1}$, note that a collection of orthogonal vectors $v_2,...,v_{n} \in T_p\mathbb{S}^{n-1}$ is a positively oriented orthonormal basis for $T_p\mathbb{S}^{n-1}$ if and only if the matrix whose columns are $x,v_2,...,v_n$ has determinant $+1$.  But given such a collection, \[ i^{\ast}_{\mathbb{S}^{n-1}}\omega(v_2,...,v_n) =  \omega(p,v_2,...,v_n) \] which can be seen to be the same determinant.
+
+A computation shows that $d\omega = 0$: given any term in the sum, only differentiation by $\frac{d}{dx_i}$ produces a nonzero covector. This derivative is computed as follows: \[ \frac{d}{dx_i} \bigg( \frac{x^i}{\vert x \vert^n}(-1)^{n-1}  \bigg) = (-1)^{n-1}  \frac{\vert x \vert^2 - n \, x_i^2}{\vert x \vert^{n+2}} \] 
+Therefore
+\[ \sum_{i=1}^N \frac{d}{dx_i}\bigg( \frac{x^i}{\vert x \vert^n}(-1)^{n-1}  \bigg) dx^i \wedge dx^1 \wedge ... \wedge \hat{dx^i} \wedge ... \wedge dx^n  = \sum_{i=1}^N  \frac{\vert x \vert^2 - n \, x_i^2}{\vert x \vert^{n+2}} \, dx^1 \wedge ... \wedge dx^n = 0.  \]
+On the other hand, the integral of $i^{\ast}_{\mathbb{S}^{n-1}}\omega$ over $\mathbb{S}^{n-1}$ is nonzero by Proposition 16.28. (Of course, it is the volume of $\mathbb{S}^{n-1}$.) Therefore it follows from Corollary 16.15 that $\omega$ is not exact. 
+\end{document}

@@ -1,0 +1,48 @@
+\documentclass[10pt,letter]{article}
+\usepackage{amsmath,amssymb,breqn,enumitem,fullpage,graphicx,setspace,mathtools,pst-node,stmaryrd,tikz-cd}
+\onehalfspacing
+\usepackage{fullpage}
+
+\begin{document}
+\noindent Github/dogestoyevsky \\
+July 2017
+\begin{center}
+\textbf{Chapter Fifteen: Orientations}\\ Lee, \textit{An Introduction to Smooth Manifolds}
+
+\line(1,0){250}
+\end{center}
+\subparagraph*{15.2} {\bf Local diffeomorphisms are either orientation-preserving or orientation-reversing on connected manifolds.} Let $A \subseteq M$ be the set of points where $F$ is orientation-preserving. We claim that $A$ is both open and closed. To see that $A$ is closed, let $x$ be a limit point of $A$, let $(x_\ell)$ be a sequence of points in $A$ converging to $x$, and let $\omega$ be an orientation form on $N$. There is a smooth oriented chart containing $x$ and all but finitely many points of $(x_\ell)$. Let $E_1,...,E_n$ be the corresponding oriented coordinate frame. Then $\omega(dF_{x_\ell}E_1(x_\ell),...,dF_{x_\ell}E_n(x_\ell))$ is defined and positive for all sufficiently large $\ell$. But then $\omega(dF_{x}E_1(x),...,dF_{x}E_1) \geq 0$ by continuity. However, this quantity is nonzero since $F$ is a local diffeomorphism and $\omega$ is nondegenerate. Therefore $\omega(dF_{x}E_1(x),...,dF_{x}E_1) > 0$, so $F$ is orientation-preserving at $x$. That $A$ is open follows from Exercise 15.13: given a choice of oriented charts on $M$ and $N$, if the Jacobian determinant of $F$ is positive at $p \in M$ then it is positive in a neighborhood of $p$. 
+
+This shows that $A$ is either $\emptyset$ or $M$. A similar argument shows that the set of points where $F$ is orientation-reversing is either $\emptyset$ or $M$. Since $F$ is a local diffeomorphism, at any point it is either orientation-reversing or orientation-preserving, so one of these two sets is nonempty and therefore all of $M$. 
+
+\subparagraph*{15.4} {\bf Flows are orientation-preserving.} Let $\omega$ be a smooth orientation form on $M$. Given $p \in M$, let $(v_i)$ be an oriented basis for $T_pM$. The function \[ G(t) =  \omega((d\theta_t)_p v_1,...,(d\theta_t)_p v_n) \] defined for all $t$ such that $p \in M^t$ is smooth, and since $\theta_0 = \text{Id}_M$, $G(0) > 0$. But since $\theta_t$ is a diffeomorphism for all $t$, $G$ is nonvanishing, so it positive for all $t$ where it is defined. This proves that $(d\theta_t)_p$ sends an oriented basis for $T_pM$ to an oriented basis for $T_{\theta_t(p)}M$. Since $p$ and $t$ were arbitrary, this shows that $\theta_t$ is orientation-preserving wherever it is defined. 
+
+\subparagraph*{15.5} {\bf The tangent and cotangent bundles are orientable.} The standard coordinate charts on $TM$ are consistenly oriented. For given $p \in M$, let $(U,(x^i))$ and $(V,(y^i))$ be charts on $M$ containing $p$. if $(y^{-1}(p),v)$ is the coordinate representation of a point in $TM$, then the transition map between these charts takes the form $(x \circ y^{-1}(p),D(x \circ y^{-1})v)$. The Jacobian of this map can be written blockwise with two diagonal blocks $D(x \circ y^{-1})_p$ and zeros in the upper right block. This proves that the Jacobian has determinant $\text{Det}(D(x \circ y^{-1})_p)^2$, which is positive. Therefore, these charts are consistenly oriented, so $TM$ is orientable by Proposition 15.6. 
+
+The argument is similar for $T^{\ast}M$, except the lower right block is the inverse transpose of $D(x \circ y^{-1})_p$. Since the determinant of the inverse transpose of a matrix has the same parity as the original matrix, the proof goes through. 
+
+
+\subparagraph*{15.7} {\bf Unit normal vector field determining the orientation of an immersed hypersurface.} Given $p \in S$, let $(U,(x^i))$ be a chart for $S$ containing $p$ and let $(W,(y^i))$ be a chart for $M$ containing $p$. Assume that $i(U) \subseteq W$. Let $\omega$ be an orientation form for $M$ and $\eta$ an orientation form for $S$. 
+
+Now, $(\frac{d}{dy^i}\vert_p)$ are not contained in the span of $(di_p\frac{d}{dx^i}\vert_p)$.Therefore we can apply the Gram-Schmidt algorithm to one of the coordinate vectors fields of $(W,(y^i))$ to produce a smooth vector field $X(p)$ that is orthogonal to $T_pS$ at each $p$. Now define \[ Y(p) = X(p) \cdot \frac{\eta_p(\frac{d}{dx^1},...,\frac{d}{dx^n})}{\omega_p(X(p),di_p\frac{d}{dx^1},...,di_p\frac{d}{dx^1})} \] and define $Z(p) = \frac{Z(p)}{\Vert Z(p) \Vert}$.  These quantities are well-defined because the given vectors are independent and $\omega$ and $\eta$ are nonvanishing. Then 
+\begin{dmath*}
+ \omega_p(Y(p),\frac{d}{dx^1}\vert_p,...,\frac{d}{dx^n}\vert_p) =  \frac{\eta_p(\frac{d}{dx^1},...,\frac{d}{dx^n})}{\omega_p(X(p),di_p\frac{d}{dx^1},...,di_p\frac{d}{dx^1})} \cdot \omega_p(X(p),\frac{d}{dx^1}\vert_p,...,\frac{d}{dx^n}\vert_p) = \eta_p(\frac{d}{dx^1}\vert_p,...,\frac{d}{dx^n}\vert_p). 
+\end{dmath*}
+Therefore $i^{\ast}_S(N \rfloor \omega)$ is an orientation form for $U$. Since $Z(p)$ is a positive multiple of $Y(p)$, this shows that $Z(p)$ is the desired vector field on $U$. Covering $S$ with such charts and using a partition of unity gives the desired vector field on $S$. 
+
+\subparagraph*{15.8} {\bf Immersed submanifolds with trivial normal bundles.} Say $S$ has a trivial normal bundle and let $\phi:  S \times \mathbb{R}^k \rightarrow TS$ be the inverse of a global trivilization. Then $X_\ell(p) = \phi(p,e_\ell)$ defines a smooth normal vector field along $S$ and the collection $\lbrace (\Phi_\ell)_p: \ell = 1,...,k \rbrace$ is independent for each $p$. Let $\omega$ be a nondegenerate $n$-form on $M$ (Proposition 15.5). Then interior multiplication by the $X_\ell$ defines a nondegenerate $n-k$-form on $S$, so $S$ is orientable.
+
+Part (b) follows from the previous question, since a global normal vector field gives a global trivialization.
+
+\subparagraph*{15.10} {\bf Characteristic property of the orientation covering.} Let $\omega$ be an orientation form on $X$. Given $p \in X$, let $G$ be an inverse for $F$ in some neighborhood of $F(p)$, and let $\mathcal{O}_p$ be the orientation defined on $T_{F(p)}M$ by $G^{\ast}\omega$, which is independent of the choice of $G$. define $\hat{F}(p) = (p,\mathcal{O}_p)$. It is clear that $F = \hat{pi} \circ \hat{F}$. 
+
+We show that $\hat{F}$ is orientation-preserving. Let $(v_1,...,v_n)$ be a positively-oriented collection of vectors in $T_pX$. Then $(dF_pv_1,...,dF_pv_n)$ is positively-oriented with respect to the orientation induced by $G^{\ast}\omega$ on the domain of $G$. Because $F = \hat{\pi} \circ \hat{F}$, this implies that $(d\hat{\pi}_p \circ d\hat{F}_p v_1,...,d\hat{\pi}_p \circ d\hat{F}_p v_n)$ is positively oriented. But by definition $d\hat{\pi}_p$ is orientation-preserving, so this implies that $(d\hat{F}_p v_1,...,d\hat{F}_p v_n)$ is orientation-preserving.
+
+To see that $\hat{F}$ is a local diffeomorphism, we can for instance write $\hat{F}$ as the composition of $F$ with a smooth local section of $\hat{\pi}$ that is chosen to have the right orientation at $F(p)$ (Theorem 4.26). 
+
+\subparagraph*{15.12} {\bf Orientation-reversing diffeomorphism of $\mathbb{R}$}. Define $g(x) = f(x) - x$. Since $f'(x) < 0$, $g'(x) < -1$. Take any point in the image of $g$ and integrate in the right direction until you have to cross the $x$ axis.
+ 
+\subparagraph*{15.16} {\bf The orientation covering of the Mobius bundle is a cylinder.} We prove that the cylinder is an oriented twofold cover of $E$, which gives the result by Theorem 15.42. Recall that the smooth structure on $E$ is induced (through Proposition 4.40) by the quotient map $p: \mathbb{R}^2 \rightarrow E$. Now let $\sim$ be the relation on $\mathbb{R}^2$ such that $(x,y) \sim (x',y')$ if and only if $y = y'$ and $x = x' + 2n$ for $n \in \mathbb{Z}$, let $\pi$ be the topological covering map $\mathbb{R}^2 \rightarrow \mathbb{R}^2/\sim$, and give $\mathbb{R}^2/\sim$ the smooth structure such that $\pi$ is a smooth covering map. On the other hand, let $F: \mathbb{R}^2 \rightarrow S^1 \times \mathbb{R}$ send $(x,y) \mapsto (e^{\pi i x},y)$. Then since $F$ is constant on the fibers of $\pi$, so by Theorem 4.31 $\mathbb{R}^2/\sim$ is diffeomorphic to $S^1 \times \mathbb{R}$. Therefore we may refer to $\mathbb{R}^2/\sim$ as the cylinder.
+
+A similar argument shows that the cylinder is a smooth cover of $E$: the projection $\mathbb{R}^2 \rightarrow E$ is constant on the fibers of $\pi$ so it induces a smooth map $G: \mathbb{R}^2/\sim \rightarrow E$. It can be checked that this map is a two-sheeted smooth covering map. 
+ \end{document}
